@@ -9,24 +9,52 @@ import NewsSection from './NewsSection';
 import Footer from './Footer';
 
 const LandingPage = () => {
-  return (
-    <Box sx={{ width: '100%', overflowX: 'hidden' }}>
-      <Navbar />
-      <HeroSection />
-      {/* Option 1: Use full width container */}
-      <Container maxWidth={false} sx={{ py: 4, px: { xs: 2, sm: 3, md: 4 } }}>
-        <EntertainmentSection />
-        <EventsSection/>
-        <NewsSection />
-      </Container>
-      {/* Alternative Option 2: Use Box instead of Container
-      <Box sx={{ py: 4, px: { xs: 2, sm: 3, md: 4 } }}>
-        <EntertainmentSection />
-      </Box>
-      */}
-      <Footer />
-    </Box>
-  );
+ return (
+ <Box
+ sx={{
+ width: '100%',
+ minHeight: '100vh',
+ display: 'flex',
+ flexDirection: 'column',
+ backgroundImage: 'url(/AMA1.jpeg)', // Single background for entire page
+ backgroundSize: 'cover',
+ backgroundPosition: 'center',
+ backgroundRepeat: 'no-repeat',
+ backgroundAttachment: 'fixed', // Optional: fixed background
+ position: 'relative',
+ overflowX: 'hidden',
+ }}
+ >
+ <Box
+ sx={{
+ position: 'absolute',
+ top: 0,
+ left: 0,
+ right: 0,
+ bottom: 0,
+ backgroundColor: 'rgba(255, 255, 255, 0.7)', // Overlay for readability
+ zIndex: 1,
+ }}
+ />
+ <Box sx={{ position: 'relative', zIndex: 2, flex: 1 }}>
+ <Navbar />
+ <Container
+ maxWidth={false}
+ sx={{
+ width: '100%',
+ py: { xs: 4, sm: 6, md: 8, xl: 10 },
+ px: 0, // Allow full-width content
+ }}
+ >
+ <HeroSection />
+ <EntertainmentSection />
+ <EventsSection />
+ <NewsSection />
+ </Container>
+ <Footer />
+ </Box>
+ </Box>
+ );
 };
 
 export default LandingPage;

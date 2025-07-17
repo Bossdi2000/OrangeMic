@@ -1,4 +1,3 @@
-// src/pages/landing/EventsSection.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Clock, Users, Ticket, ArrowRight } from 'lucide-react';
@@ -34,6 +33,19 @@ const EventsSection = () => {
       price: "₦2,000"
     },
     {
+      id: 3,
+      title: "Community Storytelling Night",
+      date: "2024-08-05",
+      time: "6:00 PM - 9:00 PM",
+      location: "Cultural Center, Abuja",
+      type: "community",
+      status: "upcoming",
+      image: "https://via.placeholder.com/400x250/ff6b35/ffffff?text=Storytelling+Night",
+      attendees: 100,
+      description: "An intimate evening where community members share their stories, experiences, and cultural narratives in a supportive environment.",
+      price: "₦1,500"
+    },
+    {
       id: 4,
       title: "Sign Dynasty Workshop: Interview Skills",
       date: "2024-07-20",
@@ -45,6 +57,19 @@ const EventsSection = () => {
       attendees: 75,
       description: "Learn the art of conducting engaging street interviews and storytelling techniques from our experienced team.",
       price: "₦3,000"
+    },
+    {
+      id: 5,
+      title: "Street Art & Interview Fusion",
+      date: "2024-08-15",
+      time: "3:00 PM - 7:00 PM",
+      location: "Arts District, FCT",
+      type: "collaboration",
+      status: "upcoming",
+      image: "https://via.placeholder.com/400x250/ff6b35/ffffff?text=Art+Fusion",
+      attendees: 200,
+      description: "A unique collaboration between street artists and Sign Dynasty, combining visual art with live interviews and performances.",
+      price: "Free"
     },
     {
       id: 6,
@@ -64,8 +89,8 @@ const EventsSection = () => {
   const filterOptions = [
     { value: 'all', label: 'All Events' },
     { value: 'upcoming', label: 'Upcoming' },
-    { value: 'past', label: 'Past Events' }
-    // Removed: { value: 'free', label: 'Free Events' }
+    { value: 'past', label: 'Past Events' },
+    { value: 'free', label: 'Free Events' }
   ];
 
   const filteredEvents = events.filter(event => {
@@ -74,6 +99,8 @@ const EventsSection = () => {
         return event.status === 'upcoming';
       case 'past':
         return event.status === 'past';
+      case 'free':
+        return event.price === 'Free';
       default:
         return true;
     }
@@ -101,79 +128,49 @@ const EventsSection = () => {
   };
 
   return (
-    <section
-      style={{
-        padding: '80px 0',
-        minHeight: '100vh',
-        position: 'relative',
-        backgroundImage: 'url(/AMA1.jpeg)', // Added background image
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Transparent White Overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(255, 255, 255, 0.7)', // Matches HeroSection
-          zIndex: 1
-        }}
-      />
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 20px',
-          position: 'relative',
-          zIndex: 2
-        }}
-      >
+    <section style={{
+      padding: '80px 0',
+      backgroundColor: 'white',
+      minHeight: '100vh'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 20px'
+      }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           style={{ textAlign: 'center', marginBottom: '60px' }}
         >
-          <h2
-            style={{
-              fontSize: '3rem',
-              fontWeight: 'bold',
-              color: '#FF6B00', // Changed to orange for contrast
-              marginBottom: '20px',
-              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' // Added for readability
-            }}
-          >
+          <h2 style={{
+            fontSize: '3rem',
+            fontWeight: 'bold',
+            color: '#333',
+            marginBottom: '20px'
+          }}>
             Upcoming Events
           </h2>
-          <p
-            style={{
-              fontSize: '1.2rem',
-              color: '#333', // Darker for contrast
-              maxWidth: '600px',
-              margin: '0 auto',
-              lineHeight: '1.6',
-              textShadow: '1px 1px 3px rgba(0, 0, 0, 0.2)' // Added for readability
-            }}
-          >
+          <p style={{
+            fontSize: '1.2rem',
+            color: '#666',
+            maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: '1.6'
+          }}>
             Join us for exciting events, workshops, and community gatherings that celebrate stories and connections
           </p>
         </motion.div>
 
         {/* Filter Buttons */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            gap: '15px',
-            marginBottom: '50px'
-          }}
-        >
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '15px',
+          marginBottom: '50px'
+        }}>
           {filterOptions.map((option) => (
             <motion.button
               key={option.value}
@@ -182,15 +179,14 @@ const EventsSection = () => {
               whileTap={{ scale: 0.95 }}
               style={{
                 padding: '12px 24px',
-                border: selectedFilter === option.value ? '2px solid #FF6B00' : '2px solid #e0e0e0',
-                backgroundColor: selectedFilter === option.value ? '#FF6B00' : 'white',
+                border: selectedFilter === option.value ? '2px solid #ff6b35' : '2px solid #e0e0e0',
+                backgroundColor: selectedFilter === option.value ? '#ff6b35' : 'white',
                 color: selectedFilter === option.value ? 'white' : '#333',
                 borderRadius: '25px',
                 fontSize: '1rem',
                 fontWeight: '600',
                 cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                textShadow: selectedFilter === option.value ? '1px 1px 2px rgba(0, 0, 0, 0.2)' : 'none'
+                transition: 'all 0.3s ease'
               }}
             >
               {option.label}
@@ -199,13 +195,11 @@ const EventsSection = () => {
         </div>
 
         {/* Events Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
-            gap: '30px'
-          }}
-        >
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
+          gap: '30px'
+        }}>
           {filteredEvents.map((event, index) => (
             <motion.div
               key={event.id}
@@ -214,7 +208,7 @@ const EventsSection = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.02, y: -5 }}
               style={{
-                backgroundColor: 'white', // Kept white for contrast
+                backgroundColor: 'white',
                 borderRadius: '20px',
                 overflow: 'hidden',
                 boxShadow: '0 15px 40px rgba(0,0,0,0.1)',
@@ -231,137 +225,105 @@ const EventsSection = () => {
                     height: '220px',
                     objectFit: 'cover'
                   }}
-                  onError={(e) => {
-                    console.error(`Failed to load event image: ${event.image}`);
-                    e.target.src = 'https://via.placeholder.com/400x250';
-                  }}
                 />
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '15px',
-                    right: '15px',
-                    backgroundColor: getStatusColor(event.status),
-                    color: 'white',
-                    padding: '6px 12px',
-                    borderRadius: '20px',
-                    fontSize: '0.8rem',
-                    fontWeight: '600',
-                    textTransform: 'uppercase',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
+                <div style={{
+                  position: 'absolute',
+                  top: '15px',
+                  right: '15px',
+                  backgroundColor: getStatusColor(event.status),
+                  color: 'white',
+                  padding: '6px 12px',
+                  borderRadius: '20px',
+                  fontSize: '0.8rem',
+                  fontWeight: '600',
+                  textTransform: 'uppercase'
+                }}>
                   {event.status}
                 </div>
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '15px',
-                    left: '15px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                    padding: '8px 12px',
-                    borderRadius: '20px',
-                    fontSize: '1.2rem'
-                  }}
-                >
+                <div style={{
+                  position: 'absolute',
+                  top: '15px',
+                  left: '15px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  padding: '8px 12px',
+                  borderRadius: '20px',
+                  fontSize: '1.2rem'
+                }}>
                   {getEventTypeIcon(event.type)}
                 </div>
               </div>
 
               <div style={{ padding: '25px' }}>
-                <h3
-                  style={{
-                    fontSize: '1.3rem',
-                    fontWeight: '700',
-                    marginBottom: '15px',
-                    color: '#333',
-                    lineHeight: '1.4',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' // Added for readability
-                  }}
-                >
+                <h3 style={{
+                  fontSize: '1.3rem',
+                  fontWeight: '700',
+                  marginBottom: '15px',
+                  color: '#333',
+                  lineHeight: '1.4'
+                }}>
                   {event.title}
                 </h3>
 
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '10px',
-                    color: '#666',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)'
-                  }}
-                >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginBottom: '10px',
+                  color: '#666'
+                }}>
                   <Calendar size={16} style={{ marginRight: '8px' }} />
                   <span style={{ fontSize: '0.9rem' }}>{event.date}</span>
                 </div>
 
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '10px',
-                    color: '#666',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)'
-                  }}
-                >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginBottom: '10px',
+                  color: '#666'
+                }}>
                   <Clock size={16} style={{ marginRight: '8px' }} />
                   <span style={{ fontSize: '0.9rem' }}>{event.time}</span>
                 </div>
 
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '10px',
-                    color: '#666',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)'
-                  }}
-                >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginBottom: '10px',
+                  color: '#666'
+                }}>
                   <MapPin size={16} style={{ marginRight: '8px' }} />
                   <span style={{ fontSize: '0.9rem' }}>{event.location}</span>
                 </div>
 
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '15px',
-                    color: '#666',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)'
-                  }}
-                >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginBottom: '15px',
+                  color: '#666'
+                }}>
                   <Users size={16} style={{ marginRight: '8px' }} />
                   <span style={{ fontSize: '0.9rem' }}>{event.attendees} attendees</span>
                 </div>
 
-                <p
-                  style={{
-                    color: '#555',
-                    lineHeight: '1.6',
-                    marginBottom: '20px',
-                    fontSize: '0.95rem',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)'
-                  }}
-                >
+                <p style={{
+                  color: '#555',
+                  lineHeight: '1.6',
+                  marginBottom: '20px',
+                  fontSize: '0.95rem'
+                }}>
                   {event.description}
                 </p>
 
-                <div
-                  style={{
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '20px'
+                }}>
+                  <div style={{
                     display: 'flex',
-                    justifyContent: 'space-between',
                     alignItems: 'center',
-                    marginBottom: '20px'
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      color: '#FF6B00',
-                      textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)'
-                    }}
-                  >
+                    color: '#ff6b35'
+                  }}>
                     <Ticket size={16} style={{ marginRight: '8px' }} />
                     <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
                       {event.price}
@@ -375,7 +337,7 @@ const EventsSection = () => {
                   style={{
                     width: '100%',
                     padding: '12px 20px',
-                    backgroundColor: event.status === 'upcoming' ? '#FF6B00' : '#6c757d',
+                    backgroundColor: event.status === 'upcoming' ? '#ff6b35' : '#6c757d',
                     color: 'white',
                     border: 'none',
                     borderRadius: '25px',
@@ -385,8 +347,7 @@ const EventsSection = () => {
                     transition: 'all 0.3s ease',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)'
+                    justifyContent: 'center'
                   }}
                   disabled={event.status === 'past'}
                 >
@@ -407,30 +368,15 @@ const EventsSection = () => {
             style={{
               textAlign: 'center',
               padding: '60px 20px',
-              color: '#333',
-              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)'
+              color: '#666'
             }}
           >
             <Calendar size={48} style={{ marginBottom: '20px', color: '#ccc' }} />
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '10px', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>
-              No events found
-            </h3>
-            <p style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)' }}>
-              Try adjusting your filter to see more events.
-            </p>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>No events found</h3>
+            <p>Try adjusting your filter to see more events.</p>
           </motion.div>
         )}
       </div>
-
-      {/* Inline CSS for Responsive Design */}
-      <style jsx>{`
-         
-        @media (max-width: 600px) {
-          section {
-            background-image: url(/AMA1.jpeg); /* Use same image or add AMA1-mobile.jpeg */
-          }
-        }
-      `}</style>
     </section>
   );
 };
