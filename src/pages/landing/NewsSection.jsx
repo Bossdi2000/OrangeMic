@@ -132,35 +132,40 @@ const NewsSection = () => {
 
   return (
     <section style={{
-      padding: '80px 0',
+      padding: 'clamp(40px, 8vw, 80px) 0',
       backgroundColor: '#f8f9fa',
       minHeight: '100vh'
     }}>
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '0 20px'
+        padding: '0 clamp(15px, 4vw, 20px)'
       }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '60px' }}
+          style={{ 
+            textAlign: 'center', 
+            marginBottom: 'clamp(40px, 8vw, 60px)' 
+          }}
         >
           <h2 style={{
-            fontSize: '3rem',
+            fontSize: 'clamp(2rem, 6vw, 3rem)',
             fontWeight: 'bold',
             color: '#333',
-            marginBottom: '20px'
+            marginBottom: 'clamp(15px, 3vw, 20px)',
+            lineHeight: '1.2'
           }}>
             Latest News
           </h2>
           <p style={{
-            fontSize: '1.2rem',
+            fontSize: 'clamp(1rem, 3vw, 1.2rem)',
             color: '#666',
             maxWidth: '600px',
             margin: '0 auto',
-            lineHeight: '1.6'
+            lineHeight: '1.6',
+            padding: '0 10px'
           }}>
             Stay updated with the latest developments, stories, and insights from the Sign Dynasty community
           </p>
@@ -171,8 +176,9 @@ const NewsSection = () => {
           display: 'flex',
           justifyContent: 'center',
           flexWrap: 'wrap',
-          gap: '15px',
-          marginBottom: '50px'
+          gap: 'clamp(8px, 2vw, 15px)',
+          marginBottom: 'clamp(30px, 6vw, 50px)',
+          padding: '0 5px'
         }}>
           {categories.map((category) => (
             <motion.button
@@ -181,42 +187,45 @@ const NewsSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{
-                padding: '10px 20px',
+                padding: 'clamp(8px, 2vw, 10px) clamp(12px, 3vw, 20px)',
                 border: selectedCategory === category.value ? '2px solid #ff6b35' : '2px solid #e0e0e0',
                 backgroundColor: selectedCategory === category.value ? '#ff6b35' : 'white',
                 color: selectedCategory === category.value ? 'white' : '#333',
                 borderRadius: '25px',
-                fontSize: '0.9rem',
+                fontSize: 'clamp(0.75rem, 2vw, 0.9rem)',
                 fontWeight: '600',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px'
+                gap: 'clamp(4px, 1vw, 8px)',
+                whiteSpace: 'nowrap'
               }}
             >
-              <span>{category.icon}</span>
-              {category.label}
+              <span style={{ fontSize: 'clamp(0.8rem, 2vw, 1rem)' }}>{category.icon}</span>
+              <span style={{ display: window.innerWidth > 480 ? 'inline' : category.value === 'all' ? 'inline' : 'none' }}>
+                {category.value === 'all' ? category.label : window.innerWidth > 768 ? category.label : ''}
+              </span>
             </motion.button>
           ))}
         </div>
 
         {/* Featured News */}
         {selectedCategory === 'all' && featuredNews.length > 0 && (
-          <div style={{ marginBottom: '60px' }}>
+          <div style={{ marginBottom: 'clamp(40px, 8vw, 60px)' }}>
             <h3 style={{
-              fontSize: '2rem',
+              fontSize: 'clamp(1.5rem, 4vw, 2rem)',
               fontWeight: '700',
               color: '#333',
-              marginBottom: '30px',
+              marginBottom: 'clamp(20px, 4vw, 30px)',
               textAlign: 'center'
             }}>
               Featured Stories
             </h3>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
-              gap: '30px'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+              gap: 'clamp(20px, 4vw, 30px)'
             }}>
               {featuredNews.map((article, index) => (
                 <motion.div
@@ -227,7 +236,7 @@ const NewsSection = () => {
                   whileHover={{ scale: 1.02, y: -5 }}
                   style={{
                     backgroundColor: 'white',
-                    borderRadius: '20px',
+                    borderRadius: 'clamp(15px, 3vw, 20px)',
                     overflow: 'hidden',
                     boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
                     transition: 'all 0.3s ease',
@@ -240,47 +249,54 @@ const NewsSection = () => {
                       alt={article.title}
                       style={{
                         width: '100%',
-                        height: '280px',
+                        height: 'clamp(180px, 25vw, 280px)',
                         objectFit: 'cover'
                       }}
                     />
                     <div style={{
                       position: 'absolute',
-                      top: '20px',
-                      left: '20px',
+                      top: 'clamp(10px, 2vw, 20px)',
+                      left: 'clamp(10px, 2vw, 20px)',
                       backgroundColor: getCategoryColor(article.category),
                       color: 'white',
-                      padding: '8px 16px',
+                      padding: 'clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 16px)',
                       borderRadius: '20px',
-                      fontSize: '0.8rem',
+                      fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)',
                       fontWeight: '600',
                       textTransform: 'uppercase',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '5px'
+                      gap: '5px',
+                      maxWidth: 'calc(100% - 120px)'
                     }}>
-                      <Tag size={14} />
-                      {article.category.replace('-', ' ')}
+                      <Tag size={clamp(12, 2.5, 14)} />
+                      <span style={{ 
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }}>
+                        {article.category.replace('-', ' ')}
+                      </span>
                     </div>
                     <div style={{
                       position: 'absolute',
-                      top: '20px',
-                      right: '20px',
+                      top: 'clamp(10px, 2vw, 20px)',
+                      right: 'clamp(10px, 2vw, 20px)',
                       backgroundColor: 'rgba(255, 107, 53, 0.9)',
                       color: 'white',
-                      padding: '8px 16px',
+                      padding: 'clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 16px)',
                       borderRadius: '20px',
-                      fontSize: '0.8rem',
+                      fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)',
                       fontWeight: '600'
                     }}>
                       FEATURED
                     </div>
                   </div>
-                  <div style={{ padding: '30px' }}>
+                  <div style={{ padding: 'clamp(20px, 4vw, 30px)' }}>
                     <h3 style={{
-                      fontSize: '1.4rem',
+                      fontSize: 'clamp(1.1rem, 3.5vw, 1.4rem)',
                       fontWeight: '700',
-                      marginBottom: '15px',
+                      marginBottom: 'clamp(10px, 2.5vw, 15px)',
                       color: '#333',
                       lineHeight: '1.4'
                     }}>
@@ -289,31 +305,56 @@ const NewsSection = () => {
                     <p style={{
                       color: '#666',
                       lineHeight: '1.6',
-                      marginBottom: '20px',
-                      fontSize: '1rem'
+                      marginBottom: 'clamp(15px, 3vw, 20px)',
+                      fontSize: 'clamp(0.9rem, 2.2vw, 1rem)'
                     }}>
                       {article.excerpt}
                     </p>
                     <div style={{
                       display: 'flex',
+                      flexDirection: window.innerWidth < 480 ? 'column' : 'row',
                       justifyContent: 'space-between',
-                      alignItems: 'center',
-                      marginBottom: '20px',
+                      alignItems: window.innerWidth < 480 ? 'flex-start' : 'center',
+                      marginBottom: 'clamp(15px, 3vw, 20px)',
                       color: '#999',
-                      fontSize: '0.9rem'
+                      fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
+                      gap: window.innerWidth < 480 ? '8px' : '15px'
                     }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                          <User size={14} />
+                      <div style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: 'clamp(10px, 2vw, 15px)',
+                        flexWrap: 'wrap'
+                      }}>
+                        <span style={{ 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: '5px',
+                          whiteSpace: 'nowrap'
+                        }}>
+                          <User size={clamp(12, 2.5, 14)} />
                           {article.author}
                         </span>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                          <Calendar size={14} />
-                          {formatDate(article.date)}
+                        <span style={{ 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: '5px',
+                          whiteSpace: 'nowrap'
+                        }}>
+                          <Calendar size={clamp(12, 2.5, 14)} />
+                          {window.innerWidth < 480 ? 
+                            new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) :
+                            formatDate(article.date)
+                          }
                         </span>
                       </div>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                        <Clock size={14} />
+                      <span style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: '5px',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        <Clock size={clamp(12, 2.5, 14)} />
                         {article.readTime}
                       </span>
                     </div>
@@ -321,17 +362,17 @@ const NewsSection = () => {
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      marginBottom: '20px',
+                      marginBottom: 'clamp(15px, 3vw, 20px)',
                       color: '#666',
-                      fontSize: '0.9rem'
+                      fontSize: 'clamp(0.8rem, 2vw, 0.9rem)'
                     }}>
-                      <div style={{ display: 'flex', gap: '20px' }}>
+                      <div style={{ display: 'flex', gap: 'clamp(15px, 3vw, 20px)' }}>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                          <Eye size={14} />
-                          {article.views}
+                          <Eye size={clamp(12, 2.5, 14)} />
+                          {article.views > 1000 ? `${(article.views/1000).toFixed(1)}k` : article.views}
                         </span>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                          <MessageCircle size={14} />
+                          <MessageCircle size={clamp(12, 2.5, 14)} />
                           {article.comments}
                         </span>
                       </div>
@@ -339,17 +380,20 @@ const NewsSection = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         style={{
-                          padding: '8px 12px',
+                          padding: 'clamp(6px, 1.5vw, 8px) clamp(10px, 2vw, 12px)',
                           backgroundColor: 'transparent',
                           color: '#ff6b35',
                           border: '1px solid #ff6b35',
                           borderRadius: '20px',
-                          fontSize: '0.8rem',
+                          fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)',
                           cursor: 'pointer',
-                          transition: 'all 0.3s ease'
+                          transition: 'all 0.3s ease',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
                         }}
                       >
-                        <Share2 size={14} />
+                        <Share2 size={clamp(12, 2.5, 14)} />
                       </motion.button>
                     </div>
                     <motion.button
@@ -357,15 +401,16 @@ const NewsSection = () => {
                       whileTap={{ scale: 0.95 }}
                       style={{
                         width: '100%',
-                        padding: '12px 20px',
+                        padding: 'clamp(10px, 2.5vw, 12px) 20px',
                         backgroundColor: '#ff6b35',
                         color: 'white',
                         border: 'none',
                         borderRadius: '25px',
-                        fontSize: '1rem',
+                        fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
                         fontWeight: '600',
                         cursor: 'pointer',
-                        transition: 'all 0.3s ease'
+                        transition: 'all 0.3s ease',
+                        minHeight: '44px'
                       }}
                     >
                       Read Full Story
@@ -381,10 +426,10 @@ const NewsSection = () => {
         <div>
           {selectedCategory !== 'all' && (
             <h3 style={{
-              fontSize: '2rem',
+              fontSize: 'clamp(1.5rem, 4vw, 2rem)',
               fontWeight: '700',
               color: '#333',
-              marginBottom: '30px',
+              marginBottom: 'clamp(20px, 4vw, 30px)',
               textAlign: 'center'
             }}>
               {categories.find(cat => cat.value === selectedCategory)?.label} News
@@ -392,8 +437,8 @@ const NewsSection = () => {
           )}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-            gap: '30px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'clamp(20px, 4vw, 30px)'
           }}>
             {(selectedCategory === 'all' ? regularNews : filteredNews).map((article, index) => (
               <motion.div
@@ -404,7 +449,7 @@ const NewsSection = () => {
                 whileHover={{ scale: 1.02, y: -5 }}
                 style={{
                   backgroundColor: 'white',
-                  borderRadius: '15px',
+                  borderRadius: 'clamp(12px, 2.5vw, 15px)',
                   overflow: 'hidden',
                   boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
                   transition: 'all 0.3s ease'
@@ -416,30 +461,34 @@ const NewsSection = () => {
                     alt={article.title}
                     style={{
                       width: '100%',
-                      height: '200px',
+                      height: 'clamp(160px, 20vw, 200px)',
                       objectFit: 'cover'
                     }}
                   />
                   <div style={{
                     position: 'absolute',
-                    top: '15px',
-                    left: '15px',
+                    top: 'clamp(10px, 2vw, 15px)',
+                    left: 'clamp(10px, 2vw, 15px)',
                     backgroundColor: getCategoryColor(article.category),
                     color: 'white',
-                    padding: '6px 12px',
+                    padding: 'clamp(4px, 1vw, 6px) clamp(8px, 2vw, 12px)',
                     borderRadius: '15px',
-                    fontSize: '0.7rem',
+                    fontSize: 'clamp(0.6rem, 1.5vw, 0.7rem)',
                     fontWeight: '600',
-                    textTransform: 'uppercase'
+                    textTransform: 'uppercase',
+                    maxWidth: 'calc(100% - 20px)',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
                   }}>
                     {article.category.replace('-', ' ')}
                   </div>
                 </div>
-                <div style={{ padding: '25px' }}>
+                <div style={{ padding: 'clamp(20px, 4vw, 25px)' }}>
                   <h3 style={{
-                    fontSize: '1.2rem',
+                    fontSize: 'clamp(1rem, 2.8vw, 1.2rem)',
                     fontWeight: '700',
-                    marginBottom: '12px',
+                    marginBottom: 'clamp(10px, 2vw, 12px)',
                     color: '#333',
                     lineHeight: '1.4'
                   }}>
@@ -448,48 +497,63 @@ const NewsSection = () => {
                   <p style={{
                     color: '#666',
                     lineHeight: '1.6',
-                    marginBottom: '15px',
-                    fontSize: '0.95rem'
+                    marginBottom: 'clamp(12px, 2.5vw, 15px)',
+                    fontSize: 'clamp(0.85rem, 2vw, 0.95rem)'
                   }}>
                     {article.excerpt}
                   </p>
                   <div style={{
                     display: 'flex',
+                    flexDirection: window.innerWidth < 400 ? 'column' : 'row',
                     justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '15px',
+                    alignItems: window.innerWidth < 400 ? 'flex-start' : 'center',
+                    marginBottom: 'clamp(12px, 2.5vw, 15px)',
                     color: '#999',
-                    fontSize: '0.8rem'
+                    fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)',
+                    gap: window.innerWidth < 400 ? '6px' : '10px'
                   }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                      <User size={12} />
+                    <span style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '5px',
+                      whiteSpace: 'nowrap'
+                    }}>
+                      <User size={clamp(10, 2, 12)} />
                       {article.author}
                     </span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                      <Calendar size={12} />
-                      {formatDate(article.date)}
+                    <span style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '5px',
+                      whiteSpace: 'nowrap'
+                    }}>
+                      <Calendar size={clamp(10, 2, 12)} />
+                      {window.innerWidth < 400 ? 
+                        new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) :
+                        formatDate(article.date)
+                      }
                     </span>
                   </div>
                   <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    marginBottom: '15px',
+                    marginBottom: 'clamp(12px, 2.5vw, 15px)',
                     color: '#666',
-                    fontSize: '0.8rem'
+                    fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)'
                   }}>
-                    <div style={{ display: 'flex', gap: '15px' }}>
+                    <div style={{ display: 'flex', gap: 'clamp(12px, 2.5vw, 15px)' }}>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                        <Eye size={12} />
-                        {article.views}
+                        <Eye size={clamp(10, 2, 12)} />
+                        {article.views > 1000 ? `${(article.views/1000).toFixed(1)}k` : article.views}
                       </span>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                        <MessageCircle size={12} />
+                        <MessageCircle size={clamp(10, 2, 12)} />
                         {article.comments}
                       </span>
                     </div>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                      <Clock size={12} />
+                      <Clock size={clamp(10, 2, 12)} />
                       {article.readTime}
                     </span>
                   </div>
@@ -498,15 +562,16 @@ const NewsSection = () => {
                     whileTap={{ scale: 0.95 }}
                     style={{
                       width: '100%',
-                      padding: '10px 15px',
+                      padding: 'clamp(8px, 2vw, 10px) 15px',
                       backgroundColor: '#ff6b35',
                       color: 'white',
                       border: 'none',
                       borderRadius: '20px',
-                      fontSize: '0.9rem',
+                      fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
                       fontWeight: '600',
                       cursor: 'pointer',
-                      transition: 'all 0.3s ease'
+                      transition: 'all 0.3s ease',
+                      minHeight: '40px'
                     }}
                   >
                     Read More
@@ -523,17 +588,30 @@ const NewsSection = () => {
             animate={{ opacity: 1 }}
             style={{
               textAlign: 'center',
-              padding: '60px 20px',
+              padding: 'clamp(40px, 10vw, 60px) 20px',
               color: '#666'
             }}
           >
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>No news found</h3>
-            <p>Try selecting a different category to see more articles.</p>
+            <h3 style={{ 
+              fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', 
+              marginBottom: '10px' 
+            }}>
+              No news found
+            </h3>
+            <p style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
+              Try selecting a different category to see more articles.
+            </p>
           </motion.div>
         )}
       </div>
     </section>
   );
+};
+
+// Helper function for clamp values
+const clamp = (min, vw, max) => {
+  if (typeof window === 'undefined') return max;
+  return Math.min(max, Math.max(min, (vw * window.innerWidth) / 100));
 };
 
 export default NewsSection;

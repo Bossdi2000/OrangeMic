@@ -69,7 +69,8 @@ const Footer = () => {
       backgroundColor: '#1a1a1a',
       color: 'white',
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      width: '100%'
     }}>
       {/* Background Pattern */}
       <div style={{
@@ -86,9 +87,11 @@ const Footer = () => {
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '60px 20px 0',
+        padding: '40px 16px 0',
         position: 'relative',
-        zIndex: 1
+        zIndex: 1,
+        width: '100%',
+        boxSizing: 'border-box'
       }}>
         {/* Newsletter Section */}
         <motion.div
@@ -97,29 +100,30 @@ const Footer = () => {
           transition={{ duration: 0.8 }}
           style={{
             textAlign: 'center',
-            marginBottom: '60px',
-            padding: '40px',
-            paddingTop: '30px',
-            paddingBottom: '30px',
+            marginBottom: '40px',
+            padding: '24px 16px',
             backgroundColor: 'rgba(255, 107, 53, 0.1)',
-            borderRadius: '20px',
-            border: '1px solid rgba(255, 107, 53, 0.2)'
+            borderRadius: '16px',
+            border: '1px solid rgba(255, 107, 53, 0.2)',
+            boxSizing: 'border-box'
           }}
         >
           <h3 style={{
-            fontSize: '2rem',
+            fontSize: 'clamp(1.5rem, 4vw, 2rem)',
             fontWeight: 'bold',
-            marginBottom: '15px',
-            color: '#ff6b35'
+            marginBottom: '12px',
+            color: '#ff6b35',
+            lineHeight: '1.2'
           }}>
             Stay Connected with Sign Dynasty
           </h3>
           <p style={{
-            fontSize: '1.1rem',
+            fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
             color: '#ccc',
-            marginBottom: '30px',
+            marginBottom: '24px',
             maxWidth: '600px',
-            margin: '0 auto 30px'
+            margin: '0 auto 24px',
+            lineHeight: '1.5'
           }}>
             Get the latest updates on our interviews, events, and community stories delivered to your inbox
           </p>
@@ -127,39 +131,47 @@ const Footer = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            gap: '15px',
-            flexWrap: 'wrap'
+            gap: '12px',
+            flexDirection: window.innerWidth <= 640 ? 'column' : 'row',
+            width: '100%',
+            maxWidth: '500px',
+            margin: '0 auto'
           }}>
             <input
               type="email"
               placeholder="Enter your email address"
               style={{
-                padding: '12px 20px',
+                padding: '12px 16px',
                 borderRadius: '25px',
                 border: '1px solid rgba(255, 255, 255, 0.3)',
                 backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 color: 'white',
-                fontSize: '1rem',
-                minWidth: '300px',
-                outline: 'none'
+                fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                width: window.innerWidth <= 640 ? '100%' : '300px',
+                maxWidth: '100%',
+                outline: 'none',
+                boxSizing: 'border-box'
               }}
             />
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{
-                padding: '12px 25px',
+                padding: '12px 20px',
                 backgroundColor: '#ff6b35',
                 color: 'white',
                 border: 'none',
                 borderRadius: '25px',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.9rem, 2vw, 1rem)',
                 fontWeight: '600',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '8px',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                width: window.innerWidth <= 640 ? '100%' : 'auto',
+                minWidth: window.innerWidth <= 640 ? 'auto' : '120px'
               }}
             >
               <Send size={16} />
@@ -175,34 +187,41 @@ const Footer = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '30px',
-            marginBottom: '60px',
+            gridTemplateColumns: window.innerWidth <= 640 ? '1fr' : 
+                                window.innerWidth <= 768 ? 'repeat(2, 1fr)' : 
+                                'repeat(3, 1fr)',
+            gap: '20px',
+            marginBottom: '40px',
             textAlign: 'center'
           }}
         >
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              whileHover={{ scale: 1.05 }} // Fixed the syntax error here
+              whileHover={{ scale: 1.05 }}
               style={{
-                padding: '30px',
+                padding: '24px 16px',
                 backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                borderRadius: '15px',
+                borderRadius: '12px',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 transition: 'all 0.3s ease'
               }}
             >
-              <stat.icon size={40} style={{ color: '#ff6b35', marginBottom: '15px' }} />
+              <stat.icon size={window.innerWidth <= 640 ? 32 : 40} style={{ color: '#ff6b35', marginBottom: '12px' }} />
               <h4 style={{
-                fontSize: '2rem',
+                fontSize: 'clamp(1.5rem, 4vw, 2rem)',
                 fontWeight: 'bold',
                 color: '#ff6b35',
-                marginBottom: '10px'
+                marginBottom: '8px',
+                lineHeight: '1.2'
               }}>
                 {stat.value}
               </h4>
-              <p style={{ color: '#ccc', fontSize: '1rem' }}>
+              <p style={{ 
+                color: '#ccc', 
+                fontSize: 'clamp(0.8rem, 2vw, 1rem)',
+                lineHeight: '1.4'
+              }}>
                 {stat.label}
               </p>
             </motion.div>
@@ -212,35 +231,42 @@ const Footer = () => {
         {/* Main Footer Links */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '40px',
-          marginBottom: '50px'
+          gridTemplateColumns: window.innerWidth <= 640 ? '1fr' : 
+                              window.innerWidth <= 768 ? 'repeat(2, 1fr)' : 
+                              window.innerWidth <= 1024 ? 'repeat(3, 1fr)' : 
+                              'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '32px',
+          marginBottom: '40px'
         }}>
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
+            style={{
+              gridColumn: window.innerWidth <= 768 ? '1 / -1' : 'auto'
+            }}
           >
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              marginBottom: '20px'
+              marginBottom: '16px',
+              justifyContent: window.innerWidth <= 640 ? 'center' : 'flex-start'
             }}>
               <div style={{
-                width: '50px',
-                height: '50px',
+                width: '40px',
+                height: '40px',
                 backgroundColor: '#ff6b35',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginRight: '15px'
+                marginRight: '12px'
               }}>
-                <Mic size={24} color="white" />
+                <Mic size={20} color="white" />
               </div>
               <h3 style={{
-                fontSize: '1.8rem',
+                fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
                 fontWeight: 'bold',
                 color: 'white'
               }}>
@@ -250,13 +276,16 @@ const Footer = () => {
             <p style={{
               color: '#ccc',
               lineHeight: '1.6',
-              marginBottom: '20px'
+              marginBottom: '16px',
+              fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+              textAlign: window.innerWidth <= 640 ? 'center' : 'left'
             }}>
               Amplifying voices, sharing stories, and building community connections through authentic street interviews and entertainment.
             </p>
             <div style={{
               display: 'flex',
-              gap: '15px'
+              gap: '12px',
+              justifyContent: window.innerWidth <= 640 ? 'center' : 'flex-start'
             }}>
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -265,8 +294,8 @@ const Footer = () => {
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                   style={{
-                    width: '40px',
-                    height: '40px',
+                    width: '36px',
+                    height: '36px',
                     borderRadius: '50%',
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
                     display: 'flex',
@@ -277,7 +306,7 @@ const Footer = () => {
                     textDecoration: 'none'
                   }}
                 >
-                  <social.icon size={18} color={social.color} />
+                  <social.icon size={16} color={social.color} />
                 </motion.a>
               ))}
             </div>
@@ -290,31 +319,34 @@ const Footer = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <h4 style={{
-              fontSize: '1.3rem',
+              fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
               fontWeight: '600',
-              marginBottom: '20px',
-              color: '#ff6b35'
+              marginBottom: '16px',
+              color: '#ff6b35',
+              textAlign: window.innerWidth <= 640 ? 'center' : 'left'
             }}>
               Quick Links
             </h4>
             <ul style={{
               listStyle: 'none',
               padding: 0,
-              margin: 0
+              margin: 0,
+              textAlign: window.innerWidth <= 640 ? 'center' : 'left'
             }}>
               {footerLinks.quickLinks.map((link, index) => (
                 <motion.li
                   key={index}
-                  whileHover={{ x: 5 }}
-                  style={{ marginBottom: '10px' }}
+                  whileHover={{ x: window.innerWidth <= 640 ? 0 : 5 }}
+                  style={{ marginBottom: '8px' }}
                 >
                   <a
                     href={link.href}
                     style={{
                       color: '#ccc',
                       textDecoration: 'none',
-                      fontSize: '1rem',
-                      transition: 'color 0.3s ease'
+                      fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                      transition: 'color 0.3s ease',
+                      lineHeight: '1.5'
                     }}
                     onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                     onMouseLeave={(e) => e.target.style.color = '#ccc'}
@@ -333,31 +365,34 @@ const Footer = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <h4 style={{
-              fontSize: '1.3rem',
+              fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
               fontWeight: '600',
-              marginBottom: '20px',
-              color: '#ff6b35'
+              marginBottom: '16px',
+              color: '#ff6b35',
+              textAlign: window.innerWidth <= 640 ? 'center' : 'left'
             }}>
               Services
             </h4>
             <ul style={{
               listStyle: 'none',
               padding: 0,
-              margin: 0
+              margin: 0,
+              textAlign: window.innerWidth <= 640 ? 'center' : 'left'
             }}>
               {footerLinks.services.map((link, index) => (
                 <motion.li
                   key={index}
-                  whileHover={{ x: 5 }}
-                  style={{ marginBottom: '10px' }}
+                  whileHover={{ x: window.innerWidth <= 640 ? 0 : 5 }}
+                  style={{ marginBottom: '8px' }}
                 >
                   <a
                     href={link.href}
                     style={{
                       color: '#ccc',
                       textDecoration: 'none',
-                      fontSize: '1rem',
-                      transition: 'color 0.3s ease'
+                      fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                      transition: 'color 0.3s ease',
+                      lineHeight: '1.5'
                     }}
                     onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                     onMouseLeave={(e) => e.target.style.color = '#ccc'}
@@ -376,31 +411,34 @@ const Footer = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <h4 style={{
-              fontSize: '1.3rem',
+              fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
               fontWeight: '600',
-              marginBottom: '20px',
-              color: '#ff6b35'
+              marginBottom: '16px',
+              color: '#ff6b35',
+              textAlign: window.innerWidth <= 640 ? 'center' : 'left'
             }}>
               Resources
             </h4>
             <ul style={{
               listStyle: 'none',
               padding: 0,
-              margin: 0
+              margin: 0,
+              textAlign: window.innerWidth <= 640 ? 'center' : 'left'
             }}>
               {footerLinks.resources.map((link, index) => (
                 <motion.li
                   key={index}
-                  whileHover={{ x: 5 }}
-                  style={{ marginBottom: '10px' }}
+                  whileHover={{ x: window.innerWidth <= 640 ? 0 : 5 }}
+                  style={{ marginBottom: '8px' }}
                 >
                   <a
                     href={link.href}
                     style={{
                       color: '#ccc',
                       textDecoration: 'none',
-                      fontSize: '1rem',
-                      transition: 'color 0.3s ease'
+                      fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                      transition: 'color 0.3s ease',
+                      lineHeight: '1.5'
                     }}
                     onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                     onMouseLeave={(e) => e.target.style.color = '#ccc'}
@@ -419,10 +457,11 @@ const Footer = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
           >
             <h4 style={{
-              fontSize: '1.3rem',
+              fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
               fontWeight: '600',
-              marginBottom: '20px',
-              color: '#ff6b35'
+              marginBottom: '16px',
+              color: '#ff6b35',
+              textAlign: window.innerWidth <= 640 ? 'center' : 'left'
             }}>
               Contact Us
             </h4>
@@ -431,15 +470,23 @@ const Footer = () => {
               padding: 0,
               margin: 0
             }}>
-              <li style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Mail size={18} color="#ff6b35" />
+              <li style={{ 
+                marginBottom: '8px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px',
+                justifyContent: window.innerWidth <= 640 ? 'center' : 'flex-start',
+                flexWrap: 'wrap'
+              }}>
+                <Mail size={16} color="#ff6b35" />
                 <a
                   href="mailto:contact@signmic.com"
                   style={{
                     color: '#ccc',
                     textDecoration: 'none',
-                    fontSize: '1rem',
-                    transition: 'color 0.3s ease'
+                    fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                    transition: 'color 0.3s ease',
+                    lineHeight: '1.5'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                   onMouseLeave={(e) => e.target.style.color = '#ccc'}
@@ -447,15 +494,23 @@ const Footer = () => {
                   contact@signmic.com
                 </a>
               </li>
-              <li style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Phone size={18} color="#ff6b35" />
+              <li style={{ 
+                marginBottom: '8px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px',
+                justifyContent: window.innerWidth <= 640 ? 'center' : 'flex-start',
+                flexWrap: 'wrap'
+              }}>
+                <Phone size={16} color="#ff6b35" />
                 <a
                   href="tel:+1234567890"
                   style={{
                     color: '#ccc',
                     textDecoration: 'none',
-                    fontSize: '1rem',
-                    transition: 'color 0.3s ease'
+                    fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                    transition: 'color 0.3s ease',
+                    lineHeight: '1.5'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                   onMouseLeave={(e) => e.target.style.color = '#ccc'}
@@ -463,9 +518,20 @@ const Footer = () => {
                   +1 (234) 567-890
                 </a>
               </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <MapPin size={18} color="#ff6b35" />
-                <span style={{ color: '#ccc', fontSize: '1rem' }}>
+              <li style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px',
+                justifyContent: window.innerWidth <= 640 ? 'center' : 'flex-start',
+                flexWrap: 'wrap'
+              }}>
+                <MapPin size={16} color="#ff6b35" />
+                <span style={{ 
+                  color: '#ccc', 
+                  fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                  lineHeight: '1.5',
+                  textAlign: window.innerWidth <= 640 ? 'center' : 'left'
+                }}>
                   123 Community Street, City, Country
                 </span>
               </li>
@@ -481,17 +547,20 @@ const Footer = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '20px'
+          gap: '16px',
+          flexDirection: window.innerWidth <= 640 ? 'column' : 'row'
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px'
+            gap: '8px',
+            order: window.innerWidth <= 640 ? 2 : 1
           }}>
-            <Heart size={18} color="#ff6b35" />
+            <Heart size={16} color="#ff6b35" />
             <span style={{
               color: '#ccc',
-              fontSize: '0.9rem'
+              fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
+              textAlign: 'center'
             }}>
               © {currentYear} Sign Mic. All rights reserved.
             </span>
@@ -501,8 +570,8 @@ const Footer = () => {
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
             style={{
-              width: '50px',
-              height: '50px',
+              width: '44px',
+              height: '44px',
               borderRadius: '50%',
               backgroundColor: '#ff6b35',
               color: 'white',
@@ -511,10 +580,11 @@ const Footer = () => {
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              order: window.innerWidth <= 640 ? 1 : 2
             }}
           >
-            <ArrowUp size={24} />
+            <ArrowUp size={20} />
           </motion.button>
         </div>
       </div>

@@ -2,11 +2,11 @@
 
 import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
-import { Play, ImageIcon, FileText, Heart } from "lucide-react"
+import { Play, Image, FileText, Heart } from "lucide-react"
 
 const EntertainmentSection = () => {
   const [activeTab, setActiveTab] = useState("videos")
-  const [expandedArticle, setExpandedArticle] = useState(null) // State to track expanded article
+  const [expandedArticle, setExpandedArticle] = useState(null)
 
   const entertainmentData = useMemo(
     () => ({
@@ -147,7 +147,6 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
     visible: { opacity: 1, y: 0 },
   }
 
-  // Function to toggle article expansion
   const toggleArticle = (id) => {
     setExpandedArticle(expandedArticle === id ? null : id)
   }
@@ -181,7 +180,7 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
                 className={`tab-button ${activeTab === tab ? "active" : ""}`}
               >
                 {tab === "videos" && <Play size={16} className="tab-icon" />}
-                {tab === "images" && <ImageIcon size={16} className="tab-icon" />}
+                {tab === "images" && <Image size={16} className="tab-icon" />}
                 {tab === "articles" && <FileText size={16} className="tab-icon" />}
                 {tab}
               </motion.button>
@@ -313,18 +312,14 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
 
       <style jsx>{`
         .entertainment-section {
-          padding: 80px 0;
+          padding: 4rem 0;
           min-height: 100vh;
           position: relative;
           background-image: url(/AMA1.jpeg);
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-          width: 100vw;
-          margin: 0;
-          left: 0;
-          right: 0;
-          box-sizing: border-box;
+          background-attachment: fixed;
         }
 
         .overlay {
@@ -340,27 +335,28 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
         .container {
           max-width: 1200px;
           margin: 0 auto;
-          padding: 0 50px 0 24px;
+          padding: 0 1.5rem;
           position: relative;
           z-index: 2;
         }
 
         .header {
           text-align: center;
-          margin-bottom: 60px;
+          margin-bottom: 3.5rem;
         }
 
         .title {
-          font-size: 3.5rem;
+          font-size: clamp(2rem, 5vw, 3.5rem);
           font-weight: bold;
           color: #FF6B00;
-          margin-bottom: 20px;
+          margin-bottom: 1.25rem;
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
           font-family: Poppins, sans-serif;
+          line-height: 1.2;
         }
 
         .subtitle {
-          font-size: 1.3rem;
+          font-size: clamp(1rem, 2.5vw, 1.3rem);
           color: #333;
           max-width: 700px;
           margin: 0 auto;
@@ -372,18 +368,18 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
         .tab-navigation {
           display: flex;
           justify-content: center;
-          margin-bottom: 40px;
+          margin-bottom: 2.5rem;
           border-bottom: 1px solid #e0e0e0;
           flex-wrap: wrap;
-          gap: 10px;
+          gap: 0.5rem;
         }
 
         .tab-button {
-          padding: 14px 28px;
-          margin: 0 5px;
+          padding: clamp(0.5rem, 2vw, 0.875rem) clamp(1rem, 3vw, 1.75rem);
+          margin: 0 0.25rem;
           border: none;
           border-radius: 25px 25px 0 0;
-          font-size: 1.1rem;
+          font-size: clamp(0.875rem, 2vw, 1.1rem);
           font-weight: 600;
           cursor: pointer;
           text-transform: capitalize;
@@ -393,30 +389,32 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
           border-bottom: 2px solid transparent;
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 0.5rem;
           font-family: Poppins, sans-serif;
+          white-space: nowrap;
         }
 
         .tab-button.active {
           background-color: #FF6B00;
           color: white;
           border-bottom: 2px solid #FF6B00;
-          text-shadow: 1px158px 2px rgba(0, 0, 0, 0.2);
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .tab-icon {
-          width: 16px;
-          height: 16px;
+          width: clamp(14px, 3vw, 16px);
+          height: clamp(14px, 3vw, 16px);
+          flex-shrink: 0;
         }
 
         .content-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-          gap: 30px;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+          gap: clamp(1rem, 3vw, 1.875rem);
         }
 
         .articles-grid {
-          grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
         }
 
         .content-card {
@@ -425,53 +423,58 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
           overflow: hidden;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
           transition: all 0.3s ease;
+          width: 100%;
+          max-width: 100%;
         }
 
         .article-card {
-          padding: 25px;
+          padding: clamp(1rem, 3vw, 1.5625rem);
         }
 
         .video-container {
           position: relative;
+          width: 100%;
         }
 
         .video-element {
           width: 100%;
-          height: 320px;
+          height: clamp(180px, 25vw, 320px);
           object-fit: cover;
+          display: block;
         }
 
         .image-element {
           width: 100%;
-          max-width: 100%; /* Ensure images don't overflow */
-          height: 270px;
+          height: clamp(200px, 25vw, 270px);
           object-fit: cover;
+          display: block;
         }
 
         .duration-badge {
           position: absolute;
-          bottom: 10px;
-          right: 10px;
+          bottom: 0.625rem;
+          right: 0.625rem;
           background-color: rgba(0, 0, 0, 0.7);
           color: white;
-          padding: 4px 8px;
+          padding: 0.25rem 0.5rem;
           border-radius: 4px;
-          font-size: 0.8rem;
+          font-size: clamp(0.7rem, 1.5vw, 0.8rem);
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
           font-family: Poppins, sans-serif;
         }
 
         .card-content {
-          padding: 15px;
+          padding: clamp(0.75rem, 2vw, 0.9375rem);
         }
 
         .card-title {
-          font-size: 1.2rem;
+          font-size: clamp(0.9rem, 2.5vw, 1.2rem);
           font-weight: 600;
-          margin-bottom: 10px;
+          margin-bottom: 0.625rem;
           color: #333;
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
           font-family: Poppins, sans-serif;
+          line-height: 1.3;
         }
 
         .card-meta {
@@ -479,33 +482,35 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
           justify-content: space-between;
           align-items: center;
           color: #666;
-          font-size: 0.9rem;
+          font-size: clamp(0.75rem, 1.8vw, 0.9rem);
           font-family: Poppins, sans-serif;
+          flex-wrap: wrap;
+          gap: 0.5rem;
         }
 
         .likes {
           display: flex;
           align-items: center;
-          gap: 4px;
+          gap: 0.25rem;
         }
 
         .category-badge {
           display: inline-block;
           background-color: #FF6B00;
           color: white;
-          padding: 5px 15px;
+          padding: 0.3125rem 0.9375rem;
           border-radius: 20px;
-          font-size: 0.8rem;
+          font-size: clamp(0.7rem, 1.5vw, 0.8rem);
           font-weight: 600;
-          margin-bottom: 15px;
+          margin-bottom: 0.9375rem;
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
           font-family: Poppins, sans-serif;
         }
 
         .article-title {
-          font-size: 1.4rem;
+          font-size: clamp(1rem, 3vw, 1.4rem);
           font-weight: 700;
-          margin-bottom: 15px;
+          margin-bottom: 0.9375rem;
           color: #333;
           line-height: 1.4;
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -515,8 +520,8 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
         .article-excerpt {
           color: #666;
           line-height: 1.6;
-          margin-bottom: 20px;
-          font-size: 1rem;
+          margin-bottom: 1.25rem;
+          font-size: clamp(0.85rem, 2vw, 1rem);
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
           font-family: Poppins, sans-serif;
         }
@@ -526,267 +531,123 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
           justify-content: space-between;
           align-items: center;
           color: #999;
-          font-size: 0.9rem;
+          font-size: clamp(0.75rem, 1.8vw, 0.9rem);
           flex-wrap: wrap;
-          gap: 10px;
+          gap: 0.625rem;
           font-family: Poppins, sans-serif;
         }
 
         .read-more-btn {
-          margin-top: 20px;
-          padding: 10px 20px;
+          margin-top: 1.25rem;
+          padding: clamp(0.5rem, 2vw, 0.625rem) clamp(1rem, 3vw, 1.25rem);
           background-color: #FF6B00;
           color: white;
           border: none;
           border-radius: 25px;
           cursor: pointer;
           font-weight: 600;
-          font-size: 1rem;
+          font-size: clamp(0.85rem, 2vw, 1rem);
           transition: all 0.3s ease;
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
           font-family: Poppins, sans-serif;
         }
 
-        /* Extra Large Screens (1280px+) */
-        @media (min-width: 1280px) {
-          .container {
-            padding: 0 70px 0 24px;
-          }
-          .title {
-            font-size: 3.5rem;
-          }
-          .subtitle {
-            font-size: 1.3rem;
-            max-width: 700px;
-          }
-          .content-grid {
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-          }
-          .articles-grid {
-            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-          }
-          .video-element {
-            height: 320px;
-          }
-          .image-element {
-            height: 270px;
-            max-width: 100%;
-          }
-          .tab-button {
-            padding: 14px 28px;
-            font-size: 1.1rem;
-          }
-          .card-title {
-            font-size: 1.2rem;
-          }
-          .article-title {
-            font-size: 1.4rem;
-          }
+        .read-more-btn:hover {
+          background-color: #e55a00;
+          transform: translateY(-2px);
         }
 
-        /* Large Screens (1024px–1280px) */
-        @media (max-width: 1280px) {
-          .container {
-            padding: 0 60px 0 20px;
-          }
-          .title {
-            font-size: 3rem;
-          }
-          .subtitle {
-            font-size: 1.2rem;
-          }
-          .content-grid {
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          }
-          .articles-grid {
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-          }
-          .video-element {
-            height: 300px;
-          }
-          .image-element {
-            height: 270px;
-            max-width: 100%;
-          }
-          .tab-button {
-            padding: 12px 24px;
-            font-size: 1rem;
-          }
-          .card-title {
-            font-size: 1.1rem;
-          }
-          .article-title {
-            font-size: 1.3rem;
-          }
-        }
-
-        /* Tablet/Medium Screens (768px–1024px) */
-        @media (max-width: 1024px) {
-          .entertainment-section {
-            padding: 60px 0;
-          }
-          .container {
-            padding: 0 40px 0 15px;
-          }
-          .title {
-            font-size: 2.5rem;
-          }
-          .subtitle {
-            font-size: 1.1rem;
-            max-width: 90%;
-          }
-          .content-grid {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-          }
-          .articles-grid {
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          }
-          .video-element {
-            height: 250px;
-          }
-          .image-element {
-            height: 270px;
-            max-width: 100%;
-          }
-          .tab-button {
-            padding: 10px 20px;
-            font-size: 0.95rem;
-          }
-          .card-title {
-            font-size: 1rem;
-          }
-          .article-title {
-            font-size: 1.2rem;
-          }
-          .article-excerpt {
-            font-size: 0.9rem;
-          }
-          .card-meta,
-          .article-meta {
-            font-size: 0.85rem;
-          }
-          .read-more-btn {
-            padding: 8px 16px;
-            font-size: 0.9rem;
-          }
-        }
-
-        /* Mobile/Small Screens (480px–768px) */
+        /* Tablet adjustments */
         @media (max-width: 768px) {
           .entertainment-section {
-            padding: 40px 0;
+            padding: 2.5rem 0;
+            background-attachment: scroll;
           }
+          
           .container {
-            padding: 0 25px 0 10px;
+            padding: 0 1rem;
           }
+          
           .header {
-            margin-bottom: 40px;
+            margin-bottom: 2.5rem;
           }
-          .title {
-            font-size: 2rem;
-          }
-          .subtitle {
-            font-size: 1rem;
-          }
+          
           .tab-navigation {
-            margin-bottom: 30px;
-            gap: 5px;
+            margin-bottom: 2rem;
+            gap: 0.25rem;
           }
+          
           .tab-button {
-            padding: 10px 16px;
             font-size: 0.9rem;
-            margin: 0 2px;
+            padding: 0.5rem 1rem;
           }
+          
           .content-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 1.25rem;
           }
-          .articles-grid {
-            grid-template-columns: 1fr;
-          }
-          .video-element {
-            height: 200px;
-          }
-          .image-element {
-            height: 270px;
-            max-width: 100%;
-          }
-          .card-content {
-            padding: 12px;
-          }
-          .card-title {
-            font-size: 0.9rem;
-          }
-          .article-card {
-            padding: 20px;
-          }
-          .article-title {
-            font-size: 1.1rem;
-          }
-          .article-excerpt {
-            font-size: 0.85rem;
-          }
+          
           .article-meta {
-            font-size: 0.8rem;
             flex-direction: column;
             align-items: flex-start;
-          }
-          .read-more-btn {
-            padding: 8px 16px;
-            font-size: 0.9rem;
-          }
-          .duration-badge {
-            font-size: 0.7rem;
-            padding: 3px 6px;
+            gap: 0.5rem;
           }
         }
 
-        /* Extra Small Screens (<480px) */
+        /* Mobile specific adjustments */
         @media (max-width: 480px) {
           .entertainment-section {
-            padding: 32px 0;
+            padding: 2rem 0;
             background-image: url(/AMA1-mobile.jpeg);
           }
+          
           .container {
-            padding: 0 20px 0 8px;
+            padding: 0 0.75rem;
           }
-          .title {
-            font-size: 1.8rem;
+          
+          .header {
+            margin-bottom: 2rem;
           }
-          .subtitle {
-            font-size: 0.9rem;
+          
+          .tab-navigation {
+            justify-content: space-around;
+            margin-bottom: 1.5rem;
           }
+          
           .tab-button {
-            padding: 8px 12px;
+            flex-direction: column;
+            gap: 0.25rem;
             font-size: 0.8rem;
+            padding: 0.5rem 0.75rem;
           }
-          .video-element {
-            height: 180px;
+          
+          .content-grid {
+            gap: 1rem;
+            grid-template-columns: 1fr;
           }
-          .image-element {
-            height: 270px;
-            max-width: 100%;
+          
+          .articles-grid {
+            grid-template-columns: 1fr;
           }
-          .card-title {
-            font-size: 0.85rem;
+          
+          .card-content {
+            padding: 0.75rem;
           }
-          .article-title {
-            font-size: 1rem;
+          
+          .article-card {
+            padding: 1rem;
           }
-          .article-excerpt {
-            font-size: 0.8rem;
-          }
-          .card-meta,
-          .article-meta {
+        }
+
+        /* Extra small screens */
+        @media (max-width: 360px) {
+          .tab-button {
+            padding: 0.4rem 0.6rem;
             font-size: 0.75rem;
           }
-          .read-more-btn {
-            padding: 6px 12px;
-            font-size: 0.85rem;
-          }
-          .duration-badge {
-            font-size: 0.65rem;
+          
+          .tab-icon {
+            width: 12px;
+            height: 12px;
           }
         }
       `}</style>

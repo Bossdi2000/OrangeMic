@@ -129,35 +129,40 @@ const EventsSection = () => {
 
   return (
     <section style={{
-      padding: '80px 0',
+      padding: 'clamp(40px, 8vw, 80px) 0',
       backgroundColor: 'white',
       minHeight: '100vh'
     }}>
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '0 20px'
+        padding: '0 clamp(15px, 4vw, 20px)'
       }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '60px' }}
+          style={{ 
+            textAlign: 'center', 
+            marginBottom: 'clamp(40px, 8vw, 60px)' 
+          }}
         >
           <h2 style={{
-            fontSize: '3rem',
+            fontSize: 'clamp(2rem, 6vw, 3rem)',
             fontWeight: 'bold',
             color: '#333',
-            marginBottom: '20px'
+            marginBottom: 'clamp(15px, 3vw, 20px)',
+            lineHeight: '1.2'
           }}>
             Upcoming Events
           </h2>
           <p style={{
-            fontSize: '1.2rem',
+            fontSize: 'clamp(1rem, 3vw, 1.2rem)',
             color: '#666',
             maxWidth: '600px',
             margin: '0 auto',
-            lineHeight: '1.6'
+            lineHeight: '1.6',
+            padding: '0 10px'
           }}>
             Join us for exciting events, workshops, and community gatherings that celebrate stories and connections
           </p>
@@ -168,8 +173,9 @@ const EventsSection = () => {
           display: 'flex',
           justifyContent: 'center',
           flexWrap: 'wrap',
-          gap: '15px',
-          marginBottom: '50px'
+          gap: 'clamp(10px, 2vw, 15px)',
+          marginBottom: 'clamp(30px, 6vw, 50px)',
+          padding: '0 10px'
         }}>
           {filterOptions.map((option) => (
             <motion.button
@@ -178,15 +184,17 @@ const EventsSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{
-                padding: '12px 24px',
+                padding: 'clamp(10px, 2vw, 12px) clamp(16px, 4vw, 24px)',
                 border: selectedFilter === option.value ? '2px solid #ff6b35' : '2px solid #e0e0e0',
                 backgroundColor: selectedFilter === option.value ? '#ff6b35' : 'white',
                 color: selectedFilter === option.value ? 'white' : '#333',
                 borderRadius: '25px',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.85rem, 2.5vw, 1rem)',
                 fontWeight: '600',
                 cursor: 'pointer',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                whiteSpace: 'nowrap',
+                minWidth: 'fit-content'
               }}
             >
               {option.label}
@@ -197,8 +205,9 @@ const EventsSection = () => {
         {/* Events Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
-          gap: '30px'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+          gap: 'clamp(20px, 4vw, 30px)',
+          padding: '0 5px'
         }}>
           {filteredEvents.map((event, index) => (
             <motion.div
@@ -209,11 +218,13 @@ const EventsSection = () => {
               whileHover={{ scale: 1.02, y: -5 }}
               style={{
                 backgroundColor: 'white',
-                borderRadius: '20px',
+                borderRadius: 'clamp(15px, 3vw, 20px)',
                 overflow: 'hidden',
                 boxShadow: '0 15px 40px rgba(0,0,0,0.1)',
                 transition: 'all 0.3s ease',
-                border: '1px solid #f0f0f0'
+                border: '1px solid #f0f0f0',
+                width: '100%',
+                maxWidth: '100%'
               }}
             >
               <div style={{ position: 'relative' }}>
@@ -222,19 +233,19 @@ const EventsSection = () => {
                   alt={event.title}
                   style={{
                     width: '100%',
-                    height: '220px',
+                    height: 'clamp(180px, 25vw, 220px)',
                     objectFit: 'cover'
                   }}
                 />
                 <div style={{
                   position: 'absolute',
-                  top: '15px',
-                  right: '15px',
+                  top: 'clamp(10px, 2vw, 15px)',
+                  right: 'clamp(10px, 2vw, 15px)',
                   backgroundColor: getStatusColor(event.status),
                   color: 'white',
-                  padding: '6px 12px',
+                  padding: 'clamp(4px, 1vw, 6px) clamp(8px, 2vw, 12px)',
                   borderRadius: '20px',
-                  fontSize: '0.8rem',
+                  fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)',
                   fontWeight: '600',
                   textTransform: 'uppercase'
                 }}>
@@ -242,22 +253,24 @@ const EventsSection = () => {
                 </div>
                 <div style={{
                   position: 'absolute',
-                  top: '15px',
-                  left: '15px',
+                  top: 'clamp(10px, 2vw, 15px)',
+                  left: 'clamp(10px, 2vw, 15px)',
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  padding: '8px 12px',
+                  padding: 'clamp(6px, 1.5vw, 8px) clamp(8px, 2vw, 12px)',
                   borderRadius: '20px',
-                  fontSize: '1.2rem'
+                  fontSize: 'clamp(1rem, 2.5vw, 1.2rem)'
                 }}>
                   {getEventTypeIcon(event.type)}
                 </div>
               </div>
 
-              <div style={{ padding: '25px' }}>
+              <div style={{ 
+                padding: 'clamp(20px, 4vw, 25px)'
+              }}>
                 <h3 style={{
-                  fontSize: '1.3rem',
+                  fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
                   fontWeight: '700',
-                  marginBottom: '15px',
+                  marginBottom: 'clamp(12px, 3vw, 15px)',
                   color: '#333',
                   lineHeight: '1.4'
                 }}>
@@ -267,48 +280,48 @@ const EventsSection = () => {
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  marginBottom: '10px',
+                  marginBottom: 'clamp(8px, 2vw, 10px)',
                   color: '#666'
                 }}>
-                  <Calendar size={16} style={{ marginRight: '8px' }} />
-                  <span style={{ fontSize: '0.9rem' }}>{event.date}</span>
+                  <Calendar size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
+                  <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.date}</span>
                 </div>
 
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  marginBottom: '10px',
+                  marginBottom: 'clamp(8px, 2vw, 10px)',
                   color: '#666'
                 }}>
-                  <Clock size={16} style={{ marginRight: '8px' }} />
-                  <span style={{ fontSize: '0.9rem' }}>{event.time}</span>
+                  <Clock size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
+                  <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.time}</span>
                 </div>
 
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  marginBottom: '10px',
+                  marginBottom: 'clamp(8px, 2vw, 10px)',
                   color: '#666'
                 }}>
-                  <MapPin size={16} style={{ marginRight: '8px' }} />
-                  <span style={{ fontSize: '0.9rem' }}>{event.location}</span>
+                  <MapPin size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
+                  <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.location}</span>
                 </div>
 
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  marginBottom: '15px',
+                  marginBottom: 'clamp(12px, 3vw, 15px)',
                   color: '#666'
                 }}>
-                  <Users size={16} style={{ marginRight: '8px' }} />
-                  <span style={{ fontSize: '0.9rem' }}>{event.attendees} attendees</span>
+                  <Users size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
+                  <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.attendees} attendees</span>
                 </div>
 
                 <p style={{
                   color: '#555',
                   lineHeight: '1.6',
-                  marginBottom: '20px',
-                  fontSize: '0.95rem'
+                  marginBottom: 'clamp(15px, 4vw, 20px)',
+                  fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)'
                 }}>
                   {event.description}
                 </p>
@@ -317,15 +330,15 @@ const EventsSection = () => {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  marginBottom: '20px'
+                  marginBottom: 'clamp(15px, 4vw, 20px)'
                 }}>
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     color: '#ff6b35'
                   }}>
-                    <Ticket size={16} style={{ marginRight: '8px' }} />
-                    <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
+                    <Ticket size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
+                    <span style={{ fontSize: 'clamp(1rem, 2.5vw, 1.1rem)', fontWeight: '600' }}>
                       {event.price}
                     </span>
                   </div>
@@ -336,24 +349,25 @@ const EventsSection = () => {
                   whileTap={{ scale: 0.95 }}
                   style={{
                     width: '100%',
-                    padding: '12px 20px',
+                    padding: 'clamp(10px, 2.5vw, 12px) 20px',
                     backgroundColor: event.status === 'upcoming' ? '#ff6b35' : '#6c757d',
                     color: 'white',
                     border: 'none',
                     borderRadius: '25px',
-                    fontSize: '1rem',
+                    fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
                     fontWeight: '600',
                     cursor: event.status === 'upcoming' ? 'pointer' : 'not-allowed',
                     transition: 'all 0.3s ease',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    minHeight: '48px'
                   }}
                   disabled={event.status === 'past'}
                 >
                   {event.status === 'upcoming' ? 'Register Now' : 'Event Ended'}
                   {event.status === 'upcoming' && (
-                    <ArrowRight size={16} style={{ marginLeft: '8px' }} />
+                    <ArrowRight size={clamp(14, 3, 16)} style={{ marginLeft: '8px', flexShrink: 0 }} />
                   )}
                 </motion.button>
               </div>
@@ -367,18 +381,30 @@ const EventsSection = () => {
             animate={{ opacity: 1 }}
             style={{
               textAlign: 'center',
-              padding: '60px 20px',
+              padding: 'clamp(40px, 10vw, 60px) 20px',
               color: '#666'
             }}
           >
-            <Calendar size={48} style={{ marginBottom: '20px', color: '#ccc' }} />
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>No events found</h3>
-            <p>Try adjusting your filter to see more events.</p>
+            <Calendar size={clamp(36, 8, 48)} style={{ marginBottom: '20px', color: '#ccc' }} />
+            <h3 style={{ 
+              fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', 
+              marginBottom: '10px' 
+            }}>
+              No events found
+            </h3>
+            <p style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
+              Try adjusting your filter to see more events.
+            </p>
           </motion.div>
         )}
       </div>
     </section>
   );
+};
+
+// Helper function for clamp values
+const clamp = (min, vw, max) => {
+  return Math.min(max, Math.max(min, (vw * window.innerWidth) / 100));
 };
 
 export default EventsSection;
