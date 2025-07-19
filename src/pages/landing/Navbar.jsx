@@ -1,14 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, Box } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <>
@@ -16,31 +19,23 @@ const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: "#FF6B00",
-          color: "white",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-          zIndex: 1000,
-          fontFamily: "'Poppins', sans-serif",
-        }}
       >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "0 16px",
+        <AppBar
+          position="fixed"
+          sx={{
+            bgcolor: '#FF6B00',
+            color: 'white',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            fontFamily: "'Poppins', sans-serif",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              height: "64px",
+          <Toolbar
+            sx={{
+              maxWidth: 'lg', // Constrain width like Container
+              width: '100%',
+              mx: 'auto',
+              px: { xs: 1, sm: 2, md: 3 }, // Responsive padding
+              py: { xs: 1, sm: 1.5 }, // Responsive height
             }}
           >
             {/* Logo */}
@@ -48,199 +43,158 @@ const Navbar = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
-              <div
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  backgroundColor: "white",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)",
+              <Box
+                sx={{
+                  width: { xs: '28px', sm: '36px' }, // Responsive logo size
+                  height: { xs: '28px', sm: '36px' },
+                  bgcolor: 'white',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
                 }}
               >
-                <span
-                  style={{
-                    color: "#FF6B00",
-                    fontSize: "22px",
+                <Typography
+                  sx={{
+                    color: '#FF6B00',
+                    fontSize: { xs: '16px', sm: '22px' }, // Responsive emoji size
                   }}
                 >
                   🎤
-                </span>
-              </div>
-              <h1
-                style={{
-                  fontSize: "20px",
-                  letterSpacing: "0.05em",
-                  fontWeight: "1000",
-                  margin: 0,
-                  color: "#FFFFFF",
+                </Typography>
+              </Box>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }, // Responsive title
+                  fontWeight: 700,
                   fontFamily: "'Lobster', cursive",
-                  textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
+                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
                 }}
               >
                 ORANGE MIC
-              </h1>
+              </Typography>
             </motion.div>
+
             {/* Desktop Navigation */}
-            <nav
+            <Box
               className="desktop-nav"
-              style={{
-                display: "flex",
-                gap: "32px",
+              sx={{
+                display: { xs: 'none', sm: 'flex' }, // Hide on mobile, show on larger screens
+                flexGrow: 1,
+                justifyContent: 'flex-end',
+                gap: { xs: 1, sm: 2, md: 3 }, // Responsive spacing
               }}
             >
               {["Home", "Entertainment", "Events", "News"].map((item, index) => (
-                <motion.a
+                <motion.div
                   key={index}
-                  href={`#${item.toLowerCase()}`}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  style={{
-                    color: "#FFFFFF",
-                    textDecoration: "none",
-                    fontWeight: "600",
-                    fontSize: "16px",
-                    transition: "color 0.2s, text-shadow 0.2s",
-                    cursor: "pointer",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#FED7AA"
-                    e.target.style.textShadow = "0 0 8px rgba(255, 215, 170, 0.5)"
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#FFFFFF"
-                    e.target.style.textShadow = "none"
-                  }}
                 >
-                  {item}
-                </motion.a>
+                  <Button
+                    href={`#${item.toLowerCase()}`}
+                    sx={{
+                      color: 'white',
+                      fontWeight: 600,
+                      fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' }, // Responsive font
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      '&:hover': {
+                        color: '#FED7AA',
+                        textShadow: '0 0 8px rgba(255, 215, 170, 0.5)',
+                      },
+                    }}
+                  >
+                    {item}
+                  </Button>
+                </motion.div>
               ))}
-            </nav>
+            </Box>
+
             {/* Mobile Menu Button */}
-            <motion.button
-              className="mobile-menu-button"
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleMenu}
-              style={{
-                background: "none",
-                border: "none",
-                color: "white",
-                cursor: "pointer",
-                padding: "8px",
-                borderRadius: "8px",
-                transition: "color 0.2s, background-color 0.2s",
-                display: "none", // Hidden by default, shown by media query
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.color = "#FED7AA"
-                e.target.style.backgroundColor = "rgba(255, 255, 255, 0.1)"
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.color = "white"
-                e.target.style.backgroundColor = "transparent" // Changed from 'none' to 'transparent'
-              }}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            >
-              <svg
-                width="28"
-                height="28"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <motion.div whileTap={{ scale: 0.95 }}>
+              <IconButton
+                className="mobile-menu-button"
+                onClick={toggleMenu}
+                sx={{
+                  display: { xs: 'block', sm: 'none' }, // Show only on mobile
+                  color: 'white',
+                  bgcolor: 'transparent',
+                  p: 1,
+                  borderRadius: '8px',
+                  '&:hover': {
+                    color: '#FED7AA',
+                    bgcolor: 'rgba(255, 255, 255, 0.1)',
+                  },
+                }}
+                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               >
-                {isMenuOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
-              </svg>
-            </motion.button>
-          </div>
+                {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+              </IconButton>
+            </motion.div>
+          </Toolbar>
+
           {/* Mobile Navigation Menu */}
           <AnimatePresence>
             {isMenuOpen && (
-              <motion.nav
+              <motion.div
                 initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
+                animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                style={{
-                  backgroundColor: "#E55A00",
-                  borderRadius: "0 0 12px 12px",
-                  marginBottom: "8px",
-                  overflow: "hidden",
-                }}
+                style={{ backgroundColor: '#E55A00' }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "16px",
-                    padding: "24px",
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: { xs: 1, sm: 2 }, // Responsive gap
+                    p: { xs: 2, sm: 3 }, // Responsive padding
+                    borderRadius: '0 0 12px 12px',
                   }}
                 >
                   {["Home", "Entertainment", "Events", "News"].map((item, index) => (
-                    <motion.a
+                    <motion.div
                       key={index}
-                      href={`#${item.toLowerCase()}`}
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.95 }}
-                      style={{
-                        color: "#FFFFFF",
-                        textDecoration: "none",
-                        fontWeight: "600",
-                        fontSize: "18px",
-                        transition: "color 0.2s, text-shadow 0.2s",
-                        cursor: "pointer",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                      }}
-                      onClick={() => setIsMenuOpen(false)}
-                      onMouseEnter={(e) => {
-                        e.target.style.color = "#FED7AA"
-                        e.target.style.textShadow = "0 0 8px rgba(255, 215, 170, 0.5)"
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.color = "#FFFFFF"
-                        e.target.style.textShadow = "none"
-                      }}
                     >
-                      {item}
-                    </motion.a>
+                      <Button
+                        href={`#${item.toLowerCase()}`}
+                        onClick={() => setIsMenuOpen(false)}
+                        sx={{
+                          color: 'white',
+                          fontWeight: 600,
+                          fontSize: { xs: '0.875rem', sm: '1rem' }, // Responsive font
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
+                          textAlign: 'left',
+                          justifyContent: 'flex-start',
+                          '&:hover': {
+                            color: '#FED7AA',
+                            textShadow: '0 0 8px rgba(255, 215, 170, 0.5)',
+                          },
+                        }}
+                      >
+                        {item}
+                      </Button>
+                    </motion.div>
                   ))}
-                </div>
-              </motion.nav>
+                </Box>
+              </motion.div>
             )}
           </AnimatePresence>
-        </div>
+        </AppBar>
       </motion.header>
-      {/* Inline CSS for Responsive Design */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .desktop-nav {
-            display: none !important;
-          }
-          .mobile-menu-button {
-            display: block !important;
-          }
-        }
-        @media (min-width: 769px) {
-          .mobile-menu-button {
-            display: none !important;
-          }
-        }
-      `}</style>
-    </>
-  )
-}
 
-export default Navbar
+      {/* Spacer to prevent content overlap with fixed header */}
+      <Box sx={{ height: { xs: '56px', sm: '64px', md: '72px' } }} />
+    </>
+  );
+};
+
+export default Navbar;

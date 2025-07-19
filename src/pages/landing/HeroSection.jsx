@@ -1,51 +1,59 @@
-"use client"
-import { motion } from "framer-motion"
+"use client";
+
+import { motion } from "framer-motion";
+import { Box, Container, Typography, Button } from '@mui/material';
 
 const HeroSection = () => {
   return (
-    <section
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        paddingTop: "120px",
-        paddingBottom: "40px",
+    <Box
+      component="section"
+      sx={{
+        minHeight: { xs: '70vh', sm: '80vh', md: '90vh' }, // Shorter on mobile
+        display: 'flex',
+        alignItems: 'center',
+        pt: { xs: 8, sm: 9, md: 10 }, // Account for Navbar height
+        pb: { xs: 3, sm: 4, md: 5 }, // Responsive bottom padding
         fontFamily: "'Poppins', sans-serif",
-        position: "relative",
-        backgroundImage: "url(/AMA1.jpeg)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        position: 'relative',
+        // Responsive background image
+        backgroundImage: {
+          xs: 'url(/AMA1-mobile.jpeg)', // Optimized for mobile
+          sm: 'url(/AMA1.jpeg)', // Full image for larger screens
+        },
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: { xs: 'scroll', md: 'fixed' }, // Scroll on mobile
       }}
     >
       {/* Transparent White Overlay */}
-      <div
-        style={{
-          position: "absolute",
+      <Box
+        sx={{
+          position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: "rgba(255, 255, 255, 0.7)", // Increased transparency to 70% opacity
+          bgcolor: { xs: 'rgba(255, 255, 255, 0.85)', sm: 'rgba(255, 255, 255, 0.75)' },
           zIndex: 1,
         }}
       />
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 16px",
-          width: "100%",
-          position: "relative",
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: 'relative',
           zIndex: 2,
+          px: { xs: 2, sm: 3, md: 4 }, // Responsive padding
         }}
       >
-        <div
+        <Box
           className="hero-content"
-          style={{
-            display: "grid",
-            gap: "48px",
-            alignItems: "center",
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, // Single column on mobile
+            gap: { xs: 2, sm: 3, md: 4 }, // Responsive gap
+            alignItems: 'center',
+            textAlign: { xs: 'center', md: 'left' }, // Center text on mobile
           }}
         >
           {/* Text Content */}
@@ -53,217 +61,176 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            style={{ color: "#FF6B00" }}
           >
-            <motion.h2
-              style={{
-                fontSize: "2.5rem",
-                fontWeight: "400",
-                marginBottom: "24px",
-                lineHeight: "1.2",
-                margin: 0,
-                fontFamily: "'Lobster', cursive",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.4)",
-              }}
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Welcome to
-              <br />
-              <span style={{ color: "#E55A00", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.4)" }}>ORANGE MIC</span>
-            </motion.h2>
-            <motion.p
-              style={{
-                fontSize: "1.1rem",
-                marginBottom: "32px",
-                fontWeight: "1000",
-                color: "#333",
-                lineHeight: "1.6",
-                maxWidth: "500px",
-                textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)",
-              }}
+              <Typography
+                variant="h2"
+                sx={{
+                  fontSize: { xs: '1.4rem', sm: '1.8rem', md: '2.2rem', lg: '2.5rem' },
+                  fontWeight: 400,
+                  lineHeight: 1.3,
+                  fontFamily: "'Lobster', cursive",
+                  color: '#FF6B00',
+                  textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
+                }}
+              >
+                Welcome to
+                <br />
+                <Box component="span" sx={{ color: '#E55A00' }}>
+                  ORANGE MIC
+                </Box>
+              </Typography>
+            </motion.div>
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Your gateway to the fascinating world of Sign Dynasty through engaging interviews and entertainment
-              content
-            </motion.p>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' },
+                  fontWeight: 500,
+                  color: '#333',
+                  lineHeight: 1.5,
+                  maxWidth: { xs: '95%', sm: '80%', md: '450px' },
+                  mx: { xs: 'auto', md: 0 },
+                  mt: { xs: 1.5, sm: 2 },
+                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
+                }}
+              >
+                Your gateway to the fascinating world of Sign Dynasty through engaging interviews and entertainment content
+              </Typography>
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <motion.button
+              <Button
+                component={motion.button}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                style={{
-                  backgroundColor: "#FF6B00",
-                  color: "white",
-                  padding: "14px 28px",
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = "#E55A00"
-                  e.target.style.transform = "translateY(-2px)"
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = "#FF6B00"
-                  e.target.style.transform = "translateY(0)"
+                sx={{
+                  bgcolor: '#FF6B00',
+                  color: 'white',
+                  fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.9rem' },
+                  fontWeight: 600,
+                  px: { xs: 2, sm: 3, md: 3.5 },
+                  py: { xs: 1, sm: 1.2 },
+                  borderRadius: '8px',
+                  boxShadow: '0 3px 10px rgba(0, 0, 0, 0.1)',
+                  mt: { xs: 2, sm: 3 },
+                  '&:hover': {
+                    bgcolor: '#E55A00',
+                    transform: 'translateY(-2px)',
+                  },
                 }}
               >
                 Goals
-              </motion.button>
+              </Button>
             </motion.div>
           </motion.div>
+
           {/* Image Content */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+            sx={{
+              display: 'flex',
+              justifyContent: { xs: 'center', md: 'flex-end' }, // Center on mobile, right on desktop
+              alignItems: 'center',
+              width: '100%',
             }}
           >
-            <div
-              style={{
-                position: "relative",
-                width: "100%",
-                maxWidth: "500px",
-                height: "350px",
-                borderRadius: "16px",
-                overflow: "hidden",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
+            <Box
+              sx={{
+                width: '100%',
+                maxWidth: { xs: '220px', sm: '280px', md: '340px', lg: '400px' }, // Responsive width
+                height: { xs: '140px', sm: '180px', md: '220px', lg: '260px' }, // Responsive height
+                borderRadius: '12px',
+                overflow: 'hidden',
+                boxShadow: '0 10px 20px rgba(0, 0, 0, 0.15)',
+                mx: 'auto', // Ensure centering on all screens
               }}
             >
-              <img
+              <Box
+                component="img"
                 src="/AMA.jpeg"
                 alt="SIGN MIC Interview"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block', // Ensure no extra spacing
                 }}
                 onError={(e) => {
-                  console.error("Failed to load hero image: /AMA.jpeg")
-                  e.target.src = "/placeholder.svg?height=350&width=500" // Fallback to placeholder
+                  console.error("Failed to load hero image: /AMA.jpeg");
+                  e.target.src = "/placeholder.svg?height=260&width=400";
                 }}
               />
-            </div>
+            </Box>
           </motion.div>
-        </div>
+        </Box>
+
         {/* Floating Stats */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "32px",
-            marginTop: "48px",
-            flexWrap: "wrap",
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: { xs: 1.5, sm: 2, md: 2.5 },
+            mt: { xs: 3, sm: 4, md: 5 },
+            flexWrap: 'wrap',
           }}
         >
           {[
-            { value: "100K+", label: "Followers" },
-            { value: "500+", label: "Interviews" },
-            { value: "50+", label: "Events" },
+            { value: '100K+', label: 'Followers' },
+            { value: '500+', label: 'Interviews' },
+            { value: '50+', label: 'Events' },
           ].map((stat, index) => (
-            <div
+            <Box
               key={index}
-              style={{
-                textAlign: "center",
-                color: "#FF6B00",
+              sx={{
+                textAlign: 'center',
+                color: '#FF6B00',
+                minWidth: { xs: '60px', sm: '70px', md: '80px' },
               }}
             >
-              <h3
-                style={{
-                  fontSize: "1.8rem",
-                  fontWeight: "bold",
-                  margin: 0,
-                  marginBottom: "8px",
-                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: { xs: '0.85rem', sm: '1rem', md: '1.2rem' },
+                  fontWeight: 'bold',
+                  mb: 0.5,
+                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
                 }}
               >
                 {stat.value}
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9rem",
-                  color: "#333",
-                  margin: 0,
-                  textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)",
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  fontSize: { xs: '0.6rem', sm: '0.7rem', md: '0.8rem' },
+                  color: '#333',
+                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
                 }}
               >
                 {stat.label}
-              </p>
-            </div>
+              </Typography>
+            </Box>
           ))}
         </motion.div>
-      </div>
-      {/* Inline CSS for Responsive Design */}
-      <style jsx>{`
-        .hero-content {
-          grid-template-columns: 1fr 1fr;
-        }
-        @media (max-width: 1023px) {
-          .hero-content {
-            grid-template-columns: 1fr;
-            text-align: center;
-          }
-          .hero-content > div:first-child {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          .hero-content h2 {
-            font-size: 2rem !important;
-          }
-          .hero-content p {
-            font-size: 1rem !important;
-            max-width: 90% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-          .hero-content button {
-            padding: 12px 24px !important;
-            font-size: 0.9rem !important;
-          }
-          .hero-content > div:last-child {
-            max-width: 400px;
-            margin: 0 auto;
-          }
-          .hero-content > div:last-child > div {
-            height: 300px !important;
-          }
-        }
-        @media (max-width: 600px) {
-          .hero-content h2 {
-            font-size: 1.8rem !important;
-          }
-          .hero-content > div:last-child > div {
-            height: 250px !important;
-          }
-        }
-        @media (max-width: 600px) {
-          section {
-            background-image: url(/AMA1.jpeg); /* Use same image or add AMA1-mobile.jpeg */
-          }
-        }
-      `}</style>
-    </section>
-  )
-}
+      </Container>
+    </Box>
+  );
+};
 
-export default HeroSection
+export default HeroSection;
