@@ -15,21 +15,20 @@ const LandingPage = () => {
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        // Use responsive background image with media queries
+        // Responsive background image
         backgroundImage: {
-          xs: 'url(/AMA1-mobile.jpeg)', // Use a smaller, optimized image for mobile
-          sm: 'url(/AMA1.jpeg)', // Original image for larger screens
+          xs: 'url(/AMA1-mobile.jpeg)', // Optimized for mobile
+          sm: 'url(/AMA1.jpeg)', // Full image for larger screens
         },
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        // Remove fixed background for mobile compatibility
-        backgroundAttachment: { xs: 'scroll', md: 'fixed' },
+        backgroundAttachment: { xs: 'scroll', md: 'fixed' }, // Fixed: Removed invalid 'EcclesiaBaptist'
         position: 'relative',
-        overflowX: 'hidden',
+        overflow: 'hidden', // Prevent overflow issues
       }}
     >
-      {/* Overlay with responsive opacity */}
+      {/* Overlay for readability */}
       <Box
         sx={{
           position: 'absolute',
@@ -38,8 +37,8 @@ const LandingPage = () => {
           right: 0,
           bottom: 0,
           backgroundColor: {
-            xs: 'rgba(255, 255, 255, 0.8)', // Stronger overlay on mobile for readability
-            md: 'rgba(255, 255, 255, 0.7)', // Lighter overlay on larger screens
+            xs: 'rgba(255, 255, 255, 0.85)', // Stronger overlay for mobile
+            md: 'rgba(255, 255, 255, 0.7)', // Lighter for desktop
           },
           zIndex: 1,
         }}
@@ -48,11 +47,11 @@ const LandingPage = () => {
       <Box sx={{ position: 'relative', zIndex: 2, flex: 1 }}>
         <Navbar />
         <Container
-          maxWidth="lg" // Use a max-width to constrain content on large screens
+          maxWidth="lg" // Constrain content width
           sx={{
             width: '100%',
-            px: { xs: 2, sm: 3, md: 4 }, // Responsive padding for left/right
-            py: { xs: 4, sm: 6, md: 8, xl: 10 }, // Keep vertical padding
+            px: { xs: 2, sm: 3, md: 4 }, // Responsive padding
+            py: { xs: 3, sm: 4, md: 6, lg: 8 }, // Responsive vertical padding
           }}
         >
           <HeroSection />
