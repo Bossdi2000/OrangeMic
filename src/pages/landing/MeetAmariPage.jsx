@@ -1,38 +1,28 @@
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import {
-  Mic,
-  Heart,
-  Users,
-  Zap,
-  Globe,
-  Headphones,
-  Video,
-  MapPin,
-  Radio,
-  Star,
-} from "lucide-react";
+"use client"
+
+import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { Mic, Heart, Users, Zap, Globe, Headphones, Video, MapPin, Radio, Star } from "lucide-react"
 
 const MeetAmariPage = () => {
-  const [screenSize, setScreenSize] = useState("desktop");
+  const [screenSize, setScreenSize] = useState("desktop")
 
   useEffect(() => {
     const checkScreenSize = () => {
-      const width = window.innerWidth;
-      if (width <= 480) setScreenSize("mobile");
-      else if (width <= 768) setScreenSize("tablet");
-      else if (width <= 1024) setScreenSize("laptop");
-      else setScreenSize("desktop");
-    };
+      const width = window.innerWidth
+      if (width <= 480) setScreenSize("mobile")
+      else if (width <= 768) setScreenSize("tablet")
+      else if (width <= 1024) setScreenSize("laptop")
+      else setScreenSize("desktop")
+    }
+    checkScreenSize()
+    window.addEventListener("resize", checkScreenSize)
+    return () => window.removeEventListener("resize", checkScreenSize)
+  }, [])
 
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
-
-  const isMobile = screenSize === "mobile";
-  const isTablet = screenSize === "tablet";
-  const isSmallScreen = isMobile || isTablet;
+  const isMobile = screenSize === "mobile"
+  const isTablet = screenSize === "tablet"
+  const isSmallScreen = isMobile || isTablet
 
   const orangeMicFeatures = [
     {
@@ -55,7 +45,7 @@ const MeetAmariPage = () => {
       title: "A cultural connector",
       description: "Bridging diverse Web3 communities",
     },
-  ];
+  ]
 
   const bigDreamItems = [
     {
@@ -78,7 +68,7 @@ const MeetAmariPage = () => {
       icon: <Video size={isSmallScreen ? 18 : 20} />,
       text: "A studio for meet-ups and amazing conversation and connections",
     },
-  ];
+  ]
 
   return (
     <div
@@ -132,7 +122,6 @@ const MeetAmariPage = () => {
             animation: "float 8s ease-in-out infinite reverse",
           }}
         />
-
         <style>
           {`
             @keyframes float {
@@ -141,7 +130,6 @@ const MeetAmariPage = () => {
             }
           `}
         </style>
-
         <div
           style={{
             width: "100%",
@@ -153,11 +141,7 @@ const MeetAmariPage = () => {
             textAlign: "center",
           }}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
             {/* Mic Icon */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
@@ -178,7 +162,6 @@ const MeetAmariPage = () => {
             >
               <Mic size={isMobile ? 28 : isTablet ? 36 : 52} color="white" />
             </motion.div>
-
             <div
               style={{
                 display: "inline-flex",
@@ -194,7 +177,6 @@ const MeetAmariPage = () => {
             >
               🎙️ Meet the Voice Behind The Orange Mic
             </div>
-
             <h1
               style={{
                 fontSize: isMobile ? "2rem" : isTablet ? "2.8rem" : screenSize === "laptop" ? "3.5rem" : "4.5rem",
@@ -210,7 +192,6 @@ const MeetAmariPage = () => {
             >
               Hey, I'm Amari
             </h1>
-
             <p
               style={{
                 fontSize: isMobile ? "0.9rem" : isTablet ? "1.1rem" : "1.4rem",
@@ -223,7 +204,6 @@ const MeetAmariPage = () => {
             >
               Building bridges through voice, culture, and connection in Web3
             </p>
-
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -256,7 +236,6 @@ const MeetAmariPage = () => {
           </motion.div>
         </div>
       </section>
-
       {/* About Section */}
       <section
         style={{
@@ -297,7 +276,6 @@ const MeetAmariPage = () => {
                 borderRadius: "24px 24px 0 0",
               }}
             />
-
             <div
               style={{
                 textAlign: "center",
@@ -324,7 +302,6 @@ const MeetAmariPage = () => {
                 }}
               />
             </div>
-
             <div
               style={{
                 fontSize: isMobile ? "1rem" : isTablet ? "1.1rem" : "1.2rem",
@@ -335,13 +312,16 @@ const MeetAmariPage = () => {
               }}
             >
               <p style={{ margin: `0 0 ${isMobile ? "20px" : "24px"} 0` }}>
-                A <strong style={{ color: "#FF6B00" }}>first daughter</strong> from the family of 8 (parents inclusive) and from the <strong>Igbo tribe</strong> (Imo state to be precise) navigating life with courage and purpose.
+                A <strong style={{ color: "#FF6B00" }}>first daughter</strong> from the family of 8 (parents inclusive)
+                and from the <strong>Igbo tribe</strong> (Imo state to be precise) navigating life with courage and
+                purpose.
               </p>
-
               <p style={{ margin: `0 0 ${isMobile ? "20px" : "24px"} 0` }}>
-                With growing responsibilities and limited income from my 9–5, I've chosen to step into the world of <strong style={{ color: "#FF6B00" }}>Web3</strong>, not because I know it all, but because I believe in the power of <em>learning, growing, and creating</em> a better future for myself, my family, and my community.
+                With growing responsibilities and limited income from my 9–5, I've chosen to step into the world of{" "}
+                <strong style={{ color: "#FF6B00" }}>Web3</strong>, not because I know it all, but because I believe in
+                the power of <em>learning, growing, and creating</em> a better future for myself, my family, and my
+                community.
               </p>
-
               <div
                 style={{
                   backgroundColor: "white",
@@ -380,15 +360,14 @@ const MeetAmariPage = () => {
                   I'm here to build skills, learn and unlock opportunities.
                 </p>
               </div>
-
               <p style={{ margin: "0", textAlign: "center", fontStyle: "italic", color: "#666" }}>
-                A vibrant community builder, space host, moderator, and storyteller who found purpose at the intersection of <strong style={{ color: "#FF6B00" }}>voice, culture, and connection</strong> in Web3.
+                A vibrant community builder, space host, moderator, and storyteller who found purpose at the
+                intersection of <strong style={{ color: "#FF6B00" }}>voice, culture, and connection</strong> in Web3.
               </p>
             </div>
           </motion.div>
         </div>
       </section>
-
       {/* Orange Mic Vision Section */}
       <section
         style={{
@@ -441,16 +420,11 @@ const MeetAmariPage = () => {
               </em>
             </p>
           </motion.div>
-
           {/* Orange Mic Features Grid */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: isMobile
-                ? "1fr"
-                : isTablet
-                ? "repeat(2, 1fr)"
-                : "repeat(4, 1fr)",
+              gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
               gap: isMobile ? "20px" : isTablet ? "28px" : "36px",
               marginBottom: isMobile ? "48px" : "64px",
             }}
@@ -472,14 +446,14 @@ const MeetAmariPage = () => {
                   overflow: "hidden",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-6px)";
-                  e.currentTarget.style.boxShadow = "0 15px 40px rgba(255, 107, 0, 0.2)";
-                  e.currentTarget.style.borderColor = "#FF6B00";
+                  e.currentTarget.style.transform = "translateY(-6px)"
+                  e.currentTarget.style.boxShadow = "0 15px 40px rgba(255, 107, 0, 0.2)"
+                  e.currentTarget.style.borderColor = "#FF6B00"
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                  e.currentTarget.style.borderColor = "#FFE4D1";
+                  e.currentTarget.style.transform = "translateY(0)"
+                  e.currentTarget.style.boxShadow = "none"
+                  e.currentTarget.style.borderColor = "#FFE4D1"
                 }}
               >
                 <div
@@ -493,7 +467,6 @@ const MeetAmariPage = () => {
                     borderRadius: "16px 16px 0 0",
                   }}
                 />
-
                 <div
                   style={{
                     width: isMobile ? "50px" : "60px",
@@ -510,7 +483,6 @@ const MeetAmariPage = () => {
                 >
                   {feature.icon}
                 </div>
-
                 <h3
                   style={{
                     fontSize: isMobile ? "1rem" : "1.2rem",
@@ -521,7 +493,6 @@ const MeetAmariPage = () => {
                 >
                   {feature.title}
                 </h3>
-
                 <p
                   style={{
                     fontSize: isMobile ? "0.8rem" : "0.9rem",
@@ -535,7 +506,6 @@ const MeetAmariPage = () => {
               </motion.div>
             ))}
           </div>
-
           {/* The Big Dream Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -562,7 +532,6 @@ const MeetAmariPage = () => {
                 animation: "gradientShift 3s ease-in-out infinite",
               }}
             />
-
             <style>
               {`
                 @keyframes gradientShift {
@@ -571,7 +540,6 @@ const MeetAmariPage = () => {
                 }
               `}
             </style>
-
             <div style={{ textAlign: "center", marginBottom: isMobile ? "32px" : "48px" }}>
               <h3
                 style={{
@@ -594,7 +562,6 @@ const MeetAmariPage = () => {
                 The Orange Mic as a recognized digital media brand
               </p>
             </div>
-
             <div
               style={{
                 display: "grid",
@@ -642,7 +609,6 @@ const MeetAmariPage = () => {
                 </motion.div>
               ))}
             </div>
-
             <div
               style={{
                 textAlign: "center",
@@ -668,11 +634,12 @@ const MeetAmariPage = () => {
                   letterSpacing: "1px",
                 }}
               >
-                Real people. Real talk. Real vibes.
+                <div>The Orange Mic isn't just a brand.</div>
+                <div style={{ margin: "12px 0" }}>It's a heartbeat.</div>
+                <div>It's a home for voices that matter.</div>
               </div>
             </div>
           </motion.div>
-
           {/* Why Orange Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -701,7 +668,6 @@ const MeetAmariPage = () => {
                 filter: "blur(80px)",
               }}
             />
-
             <h3
               style={{
                 fontSize: isMobile ? "2rem" : "2.5rem",
@@ -713,7 +679,6 @@ const MeetAmariPage = () => {
             >
               🧡 Why Orange?
             </h3>
-
             <p
               style={{
                 fontSize: isMobile ? "1.1rem" : "1.3rem",
@@ -725,9 +690,9 @@ const MeetAmariPage = () => {
                 zIndex: 2,
               }}
             >
-              Because it represents <strong>warmth, creativity, energy, and boldness</strong> — everything Amari brings into every conversation she leads.
+              Because it represents <strong>warmth, creativity, energy, and boldness</strong> — everything Amari brings
+              into every conversation she leads.
             </p>
-
             <div
               style={{
                 fontSize: isMobile ? "1.4rem" : "1.7rem",
@@ -745,7 +710,7 @@ const MeetAmariPage = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default MeetAmariPage;
+export default MeetAmariPage
