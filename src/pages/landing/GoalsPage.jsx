@@ -72,27 +72,43 @@ const GoalsPage = () => {
   return (
     <div
       style={{
-        width: "100%",
+        width: "100vw",
         minHeight: "100vh",
         backgroundColor: "#FAFAFA",
         fontFamily: "'Inter', 'Poppins', sans-serif",
         margin: "0",
         padding: "0",
         overflowX: "hidden",
+        boxSizing: "border-box",
       }}
     >
+      {/* Add viewport meta tag styles */}
+      <style>{`
+        * {
+          box-sizing: border-box;
+        }
+        html, body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          overflow-x: hidden;
+        }
+      `}</style>
+
       {/* Hero Section */}
       <section
         style={{
           background: "linear-gradient(135deg, #FF6B00 0%, #E55A00 100%)",
-          padding: `${getResponsiveValue('60px', '80px', '100px', '120px')} 0 ${getResponsiveValue('40px', '60px', '80px', '100px')} 0`,
+          padding: `${getResponsiveValue('40px', '60px', '80px', '100px')} ${getResponsiveValue('16px', '24px', '32px', '48px')} ${getResponsiveValue('30px', '50px', '70px', '80px')}`,
           color: "white",
           position: "relative",
           overflow: "hidden",
           width: "100%",
-          minHeight: getResponsiveValue('auto', 'auto', '70vh', '80vh'),
+          minHeight: getResponsiveValue('60vh', '70vh', '75vh', '80vh'),
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
+          boxSizing: "border-box",
         }}
       >
         {/* Decorative Elements */}
@@ -100,36 +116,35 @@ const GoalsPage = () => {
           style={{
             position: "absolute",
             top: "15%",
-            right: getResponsiveValue("-30%", "-20%", "-15%", "-10%"),
-            width: getResponsiveValue("150px", "200px", "250px", "300px"),
-            height: getResponsiveValue("150px", "200px", "250px", "300px"),
+            right: getResponsiveValue("-20%", "-15%", "-10%", "-5%"),
+            width: getResponsiveValue("120px", "180px", "220px", "280px"),
+            height: getResponsiveValue("120px", "180px", "220px", "280px"),
             borderRadius: "50%",
             background: "rgba(255, 255, 255, 0.1)",
-            filter: "blur(100px)",
+            filter: "blur(80px)",
           }}
         />
         <div
           style={{
             position: "absolute",
-            bottom: "-25%",
-            left: getResponsiveValue("-30%", "-20%", "-15%", "-10%"),
-            width: getResponsiveValue("200px", "250px", "350px", "400px"),
-            height: getResponsiveValue("200px", "250px", "350px", "400px"),
+            bottom: "-20%",
+            left: getResponsiveValue("-20%", "-15%", "-10%", "-5%"),
+            width: getResponsiveValue("160px", "220px", "300px", "380px"),
+            height: getResponsiveValue("160px", "220px", "300px", "380px"),
             borderRadius: "50%",
             background: "rgba(255, 255, 255, 0.05)",
-            filter: "blur(120px)",
+            filter: "blur(100px)",
           }}
         />
 
         <div
           style={{
             width: "100%",
-            maxWidth: "1400px",
-            margin: "0 auto",
-            padding: `0 ${getResponsiveValue('20px', '32px', '40px', '60px')}`,
+            maxWidth: getResponsiveValue("100%", "100%", "1200px", "1400px"),
             position: "relative",
             zIndex: 2,
             textAlign: "center",
+            boxSizing: "border-box",
           }}
         >
           <motion.div
@@ -142,12 +157,13 @@ const GoalsPage = () => {
                 display: "inline-flex",
                 alignItems: "center",
                 backgroundColor: "rgba(255, 255, 255, 0.2)",
-                padding: `${getResponsiveValue('8px 16px', '10px 18px', '12px 20px', '14px 24px')}`,
-                borderRadius: "30px",
-                marginBottom: getResponsiveValue('20px', '24px', '28px', '32px'),
-                fontSize: getResponsiveValue('0.8rem', '0.85rem', '0.9rem', '1rem'),
+                padding: `${getResponsiveValue('6px 14px', '8px 16px', '10px 18px', '12px 22px')}`,
+                borderRadius: "25px",
+                marginBottom: getResponsiveValue('16px', '20px', '24px', '28px'),
+                fontSize: getResponsiveValue('0.75rem', '0.8rem', '0.85rem', '0.95rem'),
                 fontWeight: "500",
                 backdropFilter: "blur(10px)",
+                whiteSpace: "nowrap",
               }}
             >
               🧡 Our Goals & Vision
@@ -155,9 +171,9 @@ const GoalsPage = () => {
             
             <h1
               style={{
-                fontSize: getResponsiveValue('2rem', '2.5rem', '3.2rem', '4rem'),
+                fontSize: getResponsiveValue('1.75rem', '2.2rem', '2.8rem', '3.5rem'),
                 fontWeight: "700",
-                margin: `0 0 ${getResponsiveValue('12px', '16px', '20px', '24px')} 0`,
+                margin: `0 0 ${getResponsiveValue('10px', '14px', '18px', '22px')} 0`,
                 lineHeight: "1.1",
                 background: "linear-gradient(45deg, #FFFFFF, #FFE4D1)",
                 backgroundClip: "text",
@@ -165,6 +181,7 @@ const GoalsPage = () => {
                 WebkitTextFillColor: "transparent",
                 wordBreak: "break-word",
                 maxWidth: "100%",
+                padding: "0 8px",
               }}
             >
               Beyond the Screens
@@ -172,14 +189,13 @@ const GoalsPage = () => {
             
             <p
               style={{
-                fontSize: getResponsiveValue('0.95rem', '1.1rem', '1.25rem', '1.4rem'),
+                fontSize: getResponsiveValue('0.85rem', '1rem', '1.15rem', '1.3rem'),
                 margin: "0",
                 opacity: "0.95",
                 fontWeight: "400",
-                maxWidth: getResponsiveValue("100%", "90%", "80%", "70%"),
+                maxWidth: "100%",
                 lineHeight: "1.6",
-                marginLeft: "auto",
-                marginRight: "auto",
+                padding: "0 16px",
               }}
             >
               The Power of Physical Connection in the Sign Community
@@ -191,17 +207,18 @@ const GoalsPage = () => {
       {/* Key Points Grid */}
       <section
         style={{
-          padding: `${getResponsiveValue('50px', '70px', '90px', '100px')} 0`,
+          padding: `${getResponsiveValue('40px', '60px', '80px', '90px')} ${getResponsiveValue('16px', '24px', '32px', '48px')}`,
           backgroundColor: "white",
           width: "100%",
+          boxSizing: "border-box",
         }}
       >
         <div
           style={{
             width: "100%",
-            maxWidth: "1400px",
+            maxWidth: getResponsiveValue("100%", "100%", "1200px", "1400px"),
             margin: "0 auto",
-            padding: `0 ${getResponsiveValue('20px', '32px', '40px', '60px')}`,
+            boxSizing: "border-box",
           }}
         >
           <div
@@ -212,8 +229,8 @@ const GoalsPage = () => {
                 : isTablet 
                 ? "repeat(2, 1fr)" 
                 : "repeat(4, 1fr)",
-              gap: getResponsiveValue('20px', '24px', '32px', '40px'),
-              marginBottom: getResponsiveValue('50px', '70px', '90px', '100px'),
+              gap: getResponsiveValue('16px', '20px', '24px', '32px'),
+              marginBottom: getResponsiveValue('40px', '60px', '80px', '90px'),
               width: "100%",
             }}
           >
@@ -225,8 +242,8 @@ const GoalsPage = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 style={{
                   textAlign: "center",
-                  padding: getResponsiveValue('18px', '22px', '28px', '32px'),
-                  borderRadius: getResponsiveValue("12px", "14px", "16px", "18px"),
+                  padding: getResponsiveValue('16px', '20px', '24px', '28px'),
+                  borderRadius: getResponsiveValue("10px", "12px", "14px", "16px"),
                   border: "1px solid #FFE4D1",
                   backgroundColor: "#FFFBF8",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -253,15 +270,15 @@ const GoalsPage = () => {
               >
                 <div
                   style={{
-                    width: getResponsiveValue("44px", "50px", "56px", "60px"),
-                    height: getResponsiveValue("44px", "50px", "56px", "60px"),
+                    width: getResponsiveValue("40px", "44px", "50px", "56px"),
+                    height: getResponsiveValue("40px", "44px", "50px", "56px"),
                     borderRadius: "50%",
                     backgroundColor: "#FF6B00",
                     color: "white",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    margin: `0 auto ${getResponsiveValue('12px', '14px', '16px', '18px')} auto`,
+                    margin: `0 auto ${getResponsiveValue('10px', '12px', '14px', '16px')} auto`,
                     transition: "transform 0.3s ease",
                   }}
                 >
@@ -269,10 +286,10 @@ const GoalsPage = () => {
                 </div>
                 <h3
                   style={{
-                    fontSize: getResponsiveValue('0.95rem', '1rem', '1.15rem', '1.3rem'),
+                    fontSize: getResponsiveValue('0.9rem', '0.95rem', '1.1rem', '1.25rem'),
                     fontWeight: "600",
                     color: "#FF6B00",
-                    margin: `0 0 ${getResponsiveValue('6px', '8px', '10px', '12px')} 0`,
+                    margin: `0 0 ${getResponsiveValue('5px', '7px', '9px', '11px')} 0`,
                     lineHeight: "1.3",
                   }}
                 >
@@ -280,7 +297,7 @@ const GoalsPage = () => {
                 </h3>
                 <p
                   style={{
-                    fontSize: getResponsiveValue('0.8rem', '0.85rem', '0.9rem', '1rem'),
+                    fontSize: getResponsiveValue('0.75rem', '0.8rem', '0.85rem', '0.95rem'),
                     color: "#666",
                     margin: "0",
                     lineHeight: "1.5",
@@ -297,16 +314,17 @@ const GoalsPage = () => {
       {/* Main Content Section */}
       <section
         style={{
-          padding: `0 0 ${getResponsiveValue('50px', '70px', '90px', '100px')} 0`,
+          padding: `0 ${getResponsiveValue('16px', '24px', '32px', '48px')} ${getResponsiveValue('40px', '60px', '80px', '90px')}`,
           width: "100%",
+          boxSizing: "border-box",
         }}
       >
         <div
           style={{
             width: "100%",
-            maxWidth: "1000px",
+            maxWidth: getResponsiveValue("100%", "100%", "900px", "1000px"),
             margin: "0 auto",
-            padding: `0 ${getResponsiveValue('20px', '32px', '40px', '60px')}`,
+            boxSizing: "border-box",
           }}
         >
           <motion.article
@@ -315,8 +333,8 @@ const GoalsPage = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             style={{
               backgroundColor: "white",
-              padding: getResponsiveValue('24px 20px', '36px 28px', '48px 40px', '60px 48px'),
-              borderRadius: getResponsiveValue("16px", "20px", "24px", "24px"),
+              padding: getResponsiveValue('20px 16px', '28px 24px', '40px 36px', '50px 44px'),
+              borderRadius: getResponsiveValue("14px", "18px", "20px", "22px"),
               boxShadow: "0 8px 40px rgba(0, 0, 0, 0.08)",
               border: "1px solid #F5F5F5",
               width: "100%",
@@ -325,17 +343,17 @@ const GoalsPage = () => {
           >
             <div
               style={{
-                fontSize: getResponsiveValue('0.95rem', '1rem', '1.15rem', '1.25rem'),
+                fontSize: getResponsiveValue('0.9rem', '0.95rem', '1.1rem', '1.2rem'),
                 lineHeight: "1.8",
                 color: "#333",
                 fontWeight: "400",
               }}
             >
-              <p style={{ margin: `0 0 ${getResponsiveValue('18px', '22px', '28px', '32px')} 0` }}>
+              <p style={{ margin: `0 0 ${getResponsiveValue('16px', '20px', '24px', '28px')} 0` }}>
                 There's something <strong style={{ color: "#FF6B00" }}>electric</strong> about finally stepping out from behind the screen and into a room filled with familiar usernames, voices, and profile pictures, now with faces, laughter, and warmth. The <strong>Sign IRL event</strong> wasn't just a meetup. It was a movement. A shift. A heartfelt leap from the virtual into the tangible.
               </p>
 
-              <p style={{ margin: `0 0 ${getResponsiveValue('18px', '22px', '28px', '32px')} 0` }}>
+              <p style={{ margin: `0 0 ${getResponsiveValue('16px', '20px', '24px', '28px')} 0` }}>
                 For so long, we've connected through pixels, voice chats, DMs, spaces, and endless reposts. But on that remarkable day, <em style={{ color: "#FF6B00", fontStyle: "normal", fontWeight: "600" }}>body language spoke, eye contact hit differently</em>, and shared laughter filled the air in ways no emoji ever could. Real conversations replaced text bubbles, and what once felt like distant admiration turned into genuine human bonds.
               </p>
 
@@ -344,33 +362,33 @@ const GoalsPage = () => {
                   backgroundColor: "#FFFBF8",
                   border: "1px solid #FFE4D1",
                   borderLeft: "4px solid #FF6B00",
-                  padding: getResponsiveValue('16px', '20px', '24px', '28px'),
-                  borderRadius: "0 12px 12px 0",
-                  margin: `${getResponsiveValue('24px', '28px', '36px', '40px')} 0`,
+                  padding: getResponsiveValue('14px', '18px', '22px', '26px'),
+                  borderRadius: "0 10px 10px 0",
+                  margin: `${getResponsiveValue('20px', '24px', '32px', '36px')} 0`,
                   fontStyle: "italic",
                   color: "#555",
-                  fontSize: getResponsiveValue('0.9rem', '0.95rem', '1rem', '1.1rem'),
+                  fontSize: getResponsiveValue('0.85rem', '0.9rem', '0.95rem', '1.05rem'),
                   position: "relative",
                 }}
               >
                 <div
                   style={{
                     position: "absolute",
-                    top: getResponsiveValue('12px', '16px', '20px', '24px'),
-                    right: getResponsiveValue('12px', '16px', '20px', '24px'),
-                    fontSize: getResponsiveValue('1.2rem', '1.4rem', '1.6rem', '1.8rem'),
+                    top: getResponsiveValue('10px', '14px', '18px', '22px'),
+                    right: getResponsiveValue('10px', '14px', '18px', '22px'),
+                    fontSize: getResponsiveValue('1.1rem', '1.3rem', '1.5rem', '1.7rem'),
                     color: "#FF6B00",
                     opacity: 0.3,
                   }}
                 >
                   "
                 </div>
-                <p style={{ margin: "0", paddingRight: getResponsiveValue('20px', '24px', '28px', '32px') }}>
+                <p style={{ margin: "0", paddingRight: getResponsiveValue('18px', '22px', '26px', '30px') }}>
                   "There were moments that simply couldn't be captured online — warm hugs, spontaneous smiles, and eyes lighting up in recognition. That's the magic of IRL: it deepens trust, inspires collaboration, and roots our digital bonds in something real."
                 </p>
               </div>
 
-              <p style={{ margin: `0 0 ${getResponsiveValue('18px', '22px', '28px', '32px')} 0` }}>
+              <p style={{ margin: `0 0 ${getResponsiveValue('16px', '20px', '24px', '28px')} 0` }}>
                 Meeting fellow builders, creators, and community leaders was a major highlight — from the <strong style={{ color: "#FF6B00" }}>king of Sign himself</strong> to main organizers like <strong>Billibash.sign and Fossito.Sign</strong>. 
               </p>
 
@@ -379,9 +397,9 @@ const GoalsPage = () => {
                 style={{
                   backgroundColor: "white",
                   border: "1px solid #FFE4D1",
-                  borderRadius: getResponsiveValue("12px", "14px", "16px", "16px"),
-                  padding: getResponsiveValue('18px', '22px', '28px', '32px'),
-                  margin: `${getResponsiveValue('24px', '28px', '36px', '40px')} 0`,
+                  borderRadius: getResponsiveValue("10px", "12px", "14px", "14px"),
+                  padding: getResponsiveValue('16px', '20px', '24px', '28px'),
+                  margin: `${getResponsiveValue('20px', '24px', '32px', '36px')} 0`,
                   width: "100%",
                   boxSizing: "border-box",
                   boxShadow: "0 2px 8px rgba(255, 107, 0, 0.05)",
@@ -390,9 +408,9 @@ const GoalsPage = () => {
                 <h3
                   style={{
                     color: "#FF6B00",
-                    fontSize: getResponsiveValue('1rem', '1.1rem', '1.25rem', '1.4rem'),
+                    fontSize: getResponsiveValue('0.95rem', '1rem', '1.2rem', '1.35rem'),
                     fontWeight: "600",
-                    margin: `0 0 ${getResponsiveValue('16px', '18px', '20px', '24px')} 0`,
+                    margin: `0 0 ${getResponsiveValue('14px', '16px', '18px', '22px')} 0`,
                     textAlign: "center",
                   }}
                 >
@@ -402,7 +420,7 @@ const GoalsPage = () => {
                   style={{
                     display: "grid",
                     gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
-                    gap: getResponsiveValue("10px", "12px", "14px", "16px"),
+                    gap: getResponsiveValue("8px", "10px", "12px", "14px"),
                     width: "100%",
                   }}
                 >
@@ -415,10 +433,10 @@ const GoalsPage = () => {
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        padding: getResponsiveValue("10px 12px", "12px 14px", "14px 16px", "16px 18px"),
+                        padding: getResponsiveValue("8px 10px", "10px 12px", "12px 14px", "14px 16px"),
                         backgroundColor: "#FFFBF8",
-                        borderRadius: getResponsiveValue("6px", "8px", "8px", "10px"),
-                        fontSize: getResponsiveValue('0.8rem', '0.85rem', '0.9rem', '1rem'),
+                        borderRadius: getResponsiveValue("5px", "6px", "7px", "8px"),
+                        fontSize: getResponsiveValue('0.75rem', '0.8rem', '0.85rem', '0.95rem'),
                         color: "#333",
                         width: "100%",
                         boxSizing: "border-box",
@@ -431,10 +449,10 @@ const GoalsPage = () => {
                       <span
                         style={{
                           color: "#FF6B00",
-                          marginRight: getResponsiveValue("6px", "8px", "10px", "12px"),
+                          marginRight: getResponsiveValue("5px", "7px", "9px", "11px"),
                           fontWeight: "600",
                           flexShrink: 0,
-                          fontSize: getResponsiveValue('0.9rem', '1rem', '1.1rem', '1.2rem'),
+                          fontSize: getResponsiveValue('0.85rem', '0.95rem', '1.05rem', '1.15rem'),
                         }}
                       >
                         ✓
@@ -445,16 +463,16 @@ const GoalsPage = () => {
                 </div>
               </div>
 
-              <p style={{ margin: `0 0 ${getResponsiveValue('18px', '22px', '28px', '32px')} 0` }}>
+              <p style={{ margin: `0 0 ${getResponsiveValue('16px', '20px', '24px', '28px')} 0` }}>
                 We <strong style={{ color: "#FF6B00" }}>danced in our Orange</strong>, built in belief, and walked away knowing one thing: the Sign community isn't just strong online — <em style={{ color: "#FF6B00", fontStyle: "normal", fontWeight: "600" }}>it's powerful in person too</em>.
               </p>
 
               <div
                 style={{
                   textAlign: "center",
-                  padding: `${getResponsiveValue('24px', '28px', '36px', '40px')} 0 0 0`,
+                  padding: `${getResponsiveValue('20px', '24px', '32px', '36px')} 0 0 0`,
                   borderTop: "1px solid #FFE4D1",
-                  marginTop: getResponsiveValue('24px', '28px', '36px', '40px'),
+                  marginTop: getResponsiveValue('20px', '24px', '32px', '36px'),
                 }}
               >
                 <motion.h2
@@ -462,10 +480,10 @@ const GoalsPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1 }}
                   style={{
-                    fontSize: getResponsiveValue('1.2rem', '1.4rem', '1.8rem', '2rem'),
+                    fontSize: getResponsiveValue('1.1rem', '1.3rem', '1.7rem', '1.9rem'),
                     fontWeight: "700",
                     color: "#FF6B00",
-                    margin: `0 0 ${getResponsiveValue('12px', '14px', '16px', '18px')} 0`,
+                    margin: `0 0 ${getResponsiveValue('10px', '12px', '14px', '16px')} 0`,
                     lineHeight: "1.2",
                   }}
                 >
@@ -476,9 +494,9 @@ const GoalsPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.2 }}
                   style={{
-                    fontSize: getResponsiveValue('0.95rem', '1rem', '1.15rem', '1.3rem'),
+                    fontSize: getResponsiveValue('0.9rem', '0.95rem', '1.1rem', '1.25rem'),
                     color: "#333",
-                    margin: `0 0 ${getResponsiveValue('6px', '8px', '8px', '10px')} 0`,
+                    margin: `0 0 ${getResponsiveValue('5px', '7px', '7px', '9px')} 0`,
                     fontWeight: "500",
                     lineHeight: "1.5",
                   }}
@@ -490,7 +508,7 @@ const GoalsPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.4 }}
                   style={{
-                    fontSize: getResponsiveValue('0.95rem', '1rem', '1.15rem', '1.3rem'),
+                    fontSize: getResponsiveValue('0.9rem', '0.95rem', '1.1rem', '1.25rem'),
                     color: "#333",
                     margin: "0",
                     fontWeight: "500",
@@ -504,8 +522,8 @@ const GoalsPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 1.6 }}
                   style={{
-                    marginTop: getResponsiveValue("20px", "22px", "24px", "28px"),
-                    fontSize: getResponsiveValue('1rem', '1.2rem', '1.4rem', '1.5rem'),
+                    marginTop: getResponsiveValue("16px", "18px", "20px", "24px"),
+                    fontSize: getResponsiveValue('0.95rem', '1.1rem', '1.3rem', '1.4rem'),
                     fontWeight: "700",
                     color: "#FF6B00",
                     lineHeight: "1.3",

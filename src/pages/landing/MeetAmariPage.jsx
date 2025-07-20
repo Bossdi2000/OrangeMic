@@ -10,7 +10,7 @@ const MeetAmariPage = () => {
   useEffect(() => {
     const checkScreenSize = () => {
       const width = window.innerWidth
-      if (width <= 480) setScreenSize("mobile")
+      if (width <= 640) setScreenSize("mobile")
       else if (width <= 768) setScreenSize("tablet")
       else if (width <= 1024) setScreenSize("laptop")
       else setScreenSize("desktop")
@@ -74,7 +74,7 @@ const MeetAmariPage = () => {
     <div
       style={{
         width: "100%",
-        minHeight: "100svh",
+        minHeight: "100vh",
         backgroundColor: "#FAFAFA",
         fontFamily: "'Inter', 'Poppins', sans-serif",
         margin: 0,
@@ -128,6 +128,9 @@ const MeetAmariPage = () => {
               0%, 100% { transform: translateY(0); }
               50% { transform: translateY(-20px); }
             }
+            @media (max-width: 640px) {
+              body { font-size: 14px; }
+            }
           `}
         </style>
         <div
@@ -135,7 +138,7 @@ const MeetAmariPage = () => {
             width: "100%",
             maxWidth: "1200px",
             margin: "0 auto",
-            padding: `0 ${isMobile ? "16px" : isTablet ? "24px" : "48px"}`,
+            padding: `0 ${isMobile ? "20px" : isTablet ? "24px" : "48px"}`,
             position: "relative",
             zIndex: 2,
             textAlign: "center",
@@ -148,8 +151,8 @@ const MeetAmariPage = () => {
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               style={{
-                width: isMobile ? "60px" : isTablet ? "80px" : "120px",
-                height: isMobile ? "60px" : isTablet ? "80px" : "120px",
+                width: isMobile ? "64px" : isTablet ? "80px" : "120px",
+                height: isMobile ? "64px" : isTablet ? "80px" : "120px",
                 borderRadius: "50%",
                 backgroundColor: "rgba(255, 255, 255, 0.2)",
                 display: "flex",
@@ -167,10 +170,10 @@ const MeetAmariPage = () => {
                 display: "inline-flex",
                 alignItems: "center",
                 backgroundColor: "rgba(255, 255, 255, 0.25)",
-                padding: `${isMobile ? "6px 16px" : "8px 20px"}`,
+                padding: `${isMobile ? "8px 16px" : "8px 20px"}`,
                 borderRadius: "30px",
                 marginBottom: isMobile ? "20px" : "24px",
-                fontSize: isMobile ? "0.8rem" : isTablet ? "0.9rem" : "1rem",
+                fontSize: isMobile ? "0.85rem" : isTablet ? "0.9rem" : "1rem",
                 fontWeight: "600",
                 backdropFilter: "blur(10px)",
               }}
@@ -179,10 +182,10 @@ const MeetAmariPage = () => {
             </div>
             <h1
               style={{
-                fontSize: isMobile ? "2rem" : isTablet ? "2.8rem" : screenSize === "laptop" ? "3.5rem" : "4.5rem",
+                fontSize: isMobile ? "2.5rem" : isTablet ? "3.2rem" : screenSize === "laptop" ? "4rem" : "4.5rem",
                 fontWeight: "800",
                 margin: `0 0 ${isMobile ? "16px" : "24px"} 0`,
-                lineHeight: "1.1",
+                lineHeight: isMobile ? "1.2" : "1.1",
                 background: "linear-gradient(45deg, #FFFFFF, #FFE4D1, #FFFFFF)",
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
@@ -194,12 +197,14 @@ const MeetAmariPage = () => {
             </h1>
             <p
               style={{
-                fontSize: isMobile ? "0.9rem" : isTablet ? "1.1rem" : "1.4rem",
+                fontSize: isMobile ? "1rem" : isTablet ? "1.2rem" : "1.4rem",
                 margin: "0 auto",
                 opacity: "0.95",
                 fontWeight: "500",
                 maxWidth: "700px",
                 lineHeight: "1.6",
+                paddingLeft: isMobile ? "10px" : "0",
+                paddingRight: isMobile ? "10px" : "0",
               }}
             >
               Building bridges through voice, culture, and connection in Web3
@@ -211,9 +216,10 @@ const MeetAmariPage = () => {
               style={{
                 marginTop: isMobile ? "32px" : "48px",
                 display: "flex",
-                gap: "10px",
+                gap: isMobile ? "8px" : "10px",
                 justifyContent: "center",
                 flexWrap: "wrap",
+                padding: isMobile ? "0 10px" : "0",
               }}
             >
               {["🌟 Community Builder", "🎙️ Space Host", "📖 Storyteller", "🌍 Cultural Connector"].map((tag, index) => (
@@ -221,9 +227,9 @@ const MeetAmariPage = () => {
                   key={index}
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.2)",
-                    padding: `${isMobile ? "6px 12px" : "8px 16px"}`,
+                    padding: `${isMobile ? "8px 12px" : "8px 16px"}`,
                     borderRadius: "25px",
-                    fontSize: isMobile ? "0.7rem" : "0.8rem",
+                    fontSize: isMobile ? "0.75rem" : "0.8rem",
                     fontWeight: "500",
                     backdropFilter: "blur(10px)",
                     border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -236,6 +242,7 @@ const MeetAmariPage = () => {
           </motion.div>
         </div>
       </section>
+      
       {/* About Section */}
       <section
         style={{
@@ -249,7 +256,7 @@ const MeetAmariPage = () => {
             width: "100%",
             maxWidth: "1100px",
             margin: "0 auto",
-            padding: `0 ${isMobile ? "16px" : isTablet ? "24px" : "48px"}`,
+            padding: `0 ${isMobile ? "20px" : isTablet ? "24px" : "48px"}`,
           }}
         >
           <motion.div
@@ -258,7 +265,7 @@ const MeetAmariPage = () => {
             transition={{ duration: 0.8 }}
             style={{
               backgroundColor: "#FFFBF8",
-              padding: isMobile ? "32px 16px" : isTablet ? "48px 32px" : "64px 48px",
+              padding: isMobile ? "32px 20px" : isTablet ? "48px 32px" : "64px 48px",
               borderRadius: "24px",
               border: "2px solid #FFE4D1",
               position: "relative",
@@ -284,7 +291,7 @@ const MeetAmariPage = () => {
             >
               <h2
                 style={{
-                  fontSize: isMobile ? "1.8rem" : isTablet ? "2.2rem" : "2.5rem",
+                  fontSize: isMobile ? "2rem" : isTablet ? "2.4rem" : "2.5rem",
                   fontWeight: "700",
                   color: "#FF6B00",
                   margin: "0 0 12px 0",
@@ -368,6 +375,7 @@ const MeetAmariPage = () => {
           </motion.div>
         </div>
       </section>
+      
       {/* Orange Mic Vision Section */}
       <section
         style={{
@@ -381,7 +389,7 @@ const MeetAmariPage = () => {
             width: "100%",
             maxWidth: "1300px",
             margin: "0 auto",
-            padding: `0 ${isMobile ? "16px" : isTablet ? "24px" : "48px"}`,
+            padding: `0 ${isMobile ? "20px" : isTablet ? "24px" : "48px"}`,
           }}
         >
           <motion.div
@@ -392,7 +400,7 @@ const MeetAmariPage = () => {
           >
             <h2
               style={{
-                fontSize: isMobile ? "2rem" : isTablet ? "2.5rem" : "3rem",
+                fontSize: isMobile ? "2.2rem" : isTablet ? "2.8rem" : "3rem",
                 fontWeight: "800",
                 color: "#FF6B00",
                 margin: "0 0 20px 0",
@@ -412,20 +420,22 @@ const MeetAmariPage = () => {
                 margin: "0 auto",
                 lineHeight: "1.7",
                 fontWeight: "500",
+                padding: isMobile ? "0 10px" : "0",
               }}
             >
               Born from one simple but powerful realization: <br />
-              <em style={{ color: "#FF6B00", fontSize: "1.1em" }}>
+              <em style={{ color: "#FF6B00", fontSize: isMobile ? "1.05em" : "1.1em" }}>
                 "There are voices that need to be heard, and spaces that need to feel like home."
               </em>
             </p>
           </motion.div>
+          
           {/* Orange Mic Features Grid */}
           <div
             style={{
               display: "grid",
               gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
-              gap: isMobile ? "20px" : isTablet ? "28px" : "36px",
+              gap: isMobile ? "24px" : isTablet ? "28px" : "36px",
               marginBottom: isMobile ? "48px" : "64px",
             }}
           >
@@ -437,7 +447,7 @@ const MeetAmariPage = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 style={{
                   backgroundColor: "white",
-                  padding: isMobile ? "24px 16px" : "32px 20px",
+                  padding: isMobile ? "28px 20px" : "32px 20px",
                   borderRadius: "16px",
                   textAlign: "center",
                   border: "2px solid #FFE4D1",
@@ -469,8 +479,8 @@ const MeetAmariPage = () => {
                 />
                 <div
                   style={{
-                    width: isMobile ? "50px" : "60px",
-                    height: isMobile ? "50px" : "60px",
+                    width: isMobile ? "54px" : "60px",
+                    height: isMobile ? "54px" : "60px",
                     borderRadius: "50%",
                     background: "linear-gradient(135deg, #FF6B00, #FF8F42)",
                     color: "white",
@@ -485,7 +495,7 @@ const MeetAmariPage = () => {
                 </div>
                 <h3
                   style={{
-                    fontSize: isMobile ? "1rem" : "1.2rem",
+                    fontSize: isMobile ? "1.1rem" : "1.2rem",
                     fontWeight: "700",
                     color: "#FF6B00",
                     margin: "0 0 10px 0",
@@ -495,7 +505,7 @@ const MeetAmariPage = () => {
                 </h3>
                 <p
                   style={{
-                    fontSize: isMobile ? "0.8rem" : "0.9rem",
+                    fontSize: isMobile ? "0.9rem" : "0.9rem",
                     color: "#666",
                     margin: "0",
                     lineHeight: "1.5",
@@ -506,6 +516,7 @@ const MeetAmariPage = () => {
               </motion.div>
             ))}
           </div>
+          
           {/* The Big Dream Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -513,7 +524,7 @@ const MeetAmariPage = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             style={{
               backgroundColor: "white",
-              padding: isMobile ? "32px 16px" : isTablet ? "48px 32px" : "64px 48px",
+              padding: isMobile ? "36px 20px" : isTablet ? "48px 32px" : "64px 48px",
               borderRadius: "24px",
               border: "2px solid #FF6B00",
               position: "relative",
@@ -543,7 +554,7 @@ const MeetAmariPage = () => {
             <div style={{ textAlign: "center", marginBottom: isMobile ? "32px" : "48px" }}>
               <h3
                 style={{
-                  fontSize: isMobile ? "1.8rem" : isTablet ? "2.2rem" : "2.5rem",
+                  fontSize: isMobile ? "2rem" : isTablet ? "2.4rem" : "2.5rem",
                   fontWeight: "800",
                   color: "#FF6B00",
                   margin: "0 0 16px 0",
@@ -553,7 +564,7 @@ const MeetAmariPage = () => {
               </h3>
               <p
                 style={{
-                  fontSize: isMobile ? "0.9rem" : "1.1rem",
+                  fontSize: isMobile ? "1rem" : "1.1rem",
                   color: "#555",
                   margin: "0",
                   fontStyle: "italic",
@@ -566,7 +577,7 @@ const MeetAmariPage = () => {
               style={{
                 display: "grid",
                 gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
-                gap: "16px",
+                gap: isMobile ? "16px" : "16px",
                 marginBottom: isMobile ? "32px" : "48px",
               }}
             >
@@ -579,7 +590,7 @@ const MeetAmariPage = () => {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    padding: isMobile ? "12px 16px" : "16px 20px",
+                    padding: isMobile ? "14px 16px" : "16px 20px",
                     backgroundColor: "#FFFBF8",
                     borderRadius: "12px",
                     border: "1px solid #FFE4D1",
@@ -599,7 +610,7 @@ const MeetAmariPage = () => {
                   </div>
                   <span
                     style={{
-                      fontSize: isMobile ? "0.85rem" : "1rem",
+                      fontSize: isMobile ? "0.9rem" : "1rem",
                       color: "#333",
                       fontWeight: "500",
                     }}
@@ -628,7 +639,7 @@ const MeetAmariPage = () => {
               </p>
               <div
                 style={{
-                  fontSize: isMobile ? "1.2rem" : "1.5rem",
+                  fontSize: isMobile ? "1.3rem" : "1.5rem",
                   fontWeight: "800",
                   color: "#333",
                   letterSpacing: "1px",
@@ -640,6 +651,7 @@ const MeetAmariPage = () => {
               </div>
             </div>
           </motion.div>
+          
           {/* Why Orange Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -648,7 +660,7 @@ const MeetAmariPage = () => {
             style={{
               marginTop: isMobile ? "48px" : "64px",
               textAlign: "center",
-              padding: isMobile ? "48px 16px" : "64px 32px",
+              padding: isMobile ? "48px 20px" : "64px 32px",
               background: "linear-gradient(135deg, #FF6B00 0%, #FF8F42 100%)",
               borderRadius: "24px",
               color: "white",
@@ -670,7 +682,7 @@ const MeetAmariPage = () => {
             />
             <h3
               style={{
-                fontSize: isMobile ? "2rem" : "2.5rem",
+                fontSize: isMobile ? "2.2rem" : "2.5rem",
                 fontWeight: "800",
                 margin: "0 0 24px 0",
                 position: "relative",
@@ -688,6 +700,7 @@ const MeetAmariPage = () => {
                 fontWeight: "500",
                 position: "relative",
                 zIndex: 2,
+                padding: isMobile ? "0 10px" : "0",
               }}
             >
               Because it represents <strong>warmth, creativity, energy, and boldness</strong> — everything Amari brings
