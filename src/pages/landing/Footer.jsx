@@ -28,7 +28,7 @@ const Footer = () => {
 
   const footerLinks = {
     quickLinks: [
-      { name: 'Home', href: '#home' },
+      { name: 'Home', href: '/landingpage' },
       { name: 'About Us', href: '#about' },
       { name: 'Entertainment', href: '#entertainment' },
       { name: 'Events', href: '#events' },
@@ -52,15 +52,12 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook', color: '#1877F2' },
-    { icon: Twitter, href: '#', label: 'Twitter', color: '#1DA1F2' },
-    { icon: Instagram, href: '#', label: 'Instagram', color: '#E4405F' },
-    { icon: Youtube, href: '#', label: 'YouTube', color: '#FF0000' }
+    { icon: Twitter, href: 'https://x.com/orangemic28', label: 'Twitter', color: '#1DA1F2' },
   ];
 
   const stats = [
-    { icon: Users, value: '10K+', label: 'Community Members' },
-    { icon: Mic, value: '500+', label: 'Interviews Conducted' },
+    { icon: Users, value: '100+', label: 'Community Members' },
+    { icon: Mic, value: '90+', label: 'Interviews Conducted' },
     { icon: Calendar, value: '50+', label: 'Events Hosted' }
   ];
 
@@ -491,7 +488,7 @@ const Footer = () => {
                   onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                   onMouseLeave={(e) => e.target.style.color = '#ccc'}
                 >
-                  contact@signmic.com
+                  contact@orangemic.com
                 </a>
               </li>
               <li style={{ 
@@ -515,8 +512,7 @@ const Footer = () => {
                   onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                   onMouseLeave={(e) => e.target.style.color = '#ccc'}
                 >
-                  +1 (234) 567-890
-                </a>
+                  +234 -8105277335                </a>
               </li>
               <li style={{ 
                 display: 'flex', 
@@ -532,7 +528,7 @@ const Footer = () => {
                   lineHeight: '1.5',
                   textAlign: window.innerWidth <= 640 ? 'center' : 'left'
                 }}>
-                  123 Community Street, City, Country
+                  Orange dynasty Nigeria
                 </span>
               </li>
             </ul>
@@ -562,7 +558,7 @@ const Footer = () => {
               fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
               textAlign: 'center'
             }}>
-              © {currentYear} Sign Mic. All rights reserved.
+              © {currentYear} Orange Mic. All rights reserved.
             </span>
           </div>
           <motion.button

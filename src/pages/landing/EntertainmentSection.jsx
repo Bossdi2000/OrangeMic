@@ -24,7 +24,7 @@ const EntertainmentSection = () => {
         },
         {
           id: 2,
-          title: "Street Performance Special",
+          title: "Interview with BILLIBASH (IRL HOST)",
           thumbnail: "/AMA3-poster.jpg",
           videoSrc: "/AMA3.mp4",
           duration: "8:32",
@@ -34,7 +34,7 @@ const EntertainmentSection = () => {
         },
         {
           id: 3,
-          title: "Sign Dynasty Behind the Scenes",
+          title: "Interview with IRL Organizer",
           thumbnail: "/AMA4-poster.jpg",
           videoSrc: "/AMA4.mp4",
           duration: "15:20",
@@ -44,9 +44,9 @@ const EntertainmentSection = () => {
         },
         {
           id: 4,
-          title: "Community Spotlight Interview",
+          title: "Interview with Sign Made Rich",
           thumbnail: "/AMA2-poster.jpg",
-          videoSrc: "/AMA2.mp4",
+          videoSrc: "/AMA4 5.mp4",
           duration: "10:15",
           date: "2024-07-08",
           views: "1.5K",
@@ -70,7 +70,7 @@ const EntertainmentSection = () => {
         },
         {
           id: 3,
-          title: "Street Performance",
+          title: "Doxxed on Chaos Queen",
           src: "/AMA7.jpeg",
           date: "2024-07-10",
           likes: 203,
@@ -86,43 +86,70 @@ const EntertainmentSection = () => {
       articles: [
         {
           id: 1,
-          title: "Sign Dynasty: Uniting Communities Through Art",
-          excerpt: "Discover how Sign Dynasty is transforming public spaces with vibrant street art and community-driven initiatives...",
+          title: "Beyond the Screens: The Power of Physical Connection in the Sign Community",
+          excerpt: "There's something electric about finally stepping out from behind the screen and into a room filled with familiar usernames, voices, and profile pictures...",
           date: "2024-07-15",
           readTime: "6 min read",
-          category: "Art & Culture",
+          category: "Community",
           likes: 45,
-          content: `🎨 The Canvas of Connection: Sign Dynasty's Artistic Revolution
+          content: `🧡 Beyond the Screens: The Power of Physical Connection in the Sign Community
 
-The streets are alive with color, stories, and connection, thanks to Sign Dynasty's relentless mission to transform urban spaces into vibrant canvases. This isn't just about paint on walls—it's about creating shared experiences that resonate across communities.
+There's something electric about finally stepping out from behind the screen and into a room filled with familiar usernames, voices, and profile pictures, now with faces, laughter, and warmth. The Sign IRL event wasn't just a meetup. It was a movement. A shift. A heartfelt leap from the virtual into the tangible.
 
-At the heart of Sign Dynasty's movement is the belief that art can bridge divides. From bustling city corners to quiet suburban streets, their murals tell stories of resilience, identity, and hope. The recent "Art in the Streets" event brought together local artists, musicians, and storytellers, turning a simple park into a celebration of creativity.
+For so long, we've connected through pixels, voice chats, DMs, spaces, and endless reposts. But on that remarkable day, body language spoke, eye contact hit differently, and shared laughter filled the air in ways no emoji ever could. Real conversations replaced text bubbles, and what once felt like distant admiration turned into genuine human bonds.
 
-What makes this community special is its inclusivity. Whether you're a seasoned artist or someone picking up a paintbrush for the first time, Sign Dynasty welcomes you. Their workshops empower individuals to express themselves, fostering a sense of belonging that transcends digital spaces.
+There were moments that simply couldn't be captured online , with warm hugs, spontaneous smiles, and eyes lighting up in recognition. That's the magic of IRL: it deepens trust, inspires collaboration, and roots our digital bonds in something real.
 
-From collaborating with Web3 creators to hosting IRL events, Sign Dynasty is redefining how we connect through art. The energy of their latest gathering, filled with laughter, music, and shared stories, proved that creativity is a universal language.
+Meeting fellow builders, creators, and community leaders was a major highlight — from the king of Sign himself to main organizers like Billibash.sign and Fossito.Sign. Finally, putting faces to powerful names like the founder of Sign Gamers, Queenfavy, Sign Heroes and Army, Trans TP, Sign Nigeria, Truth, and the ever-bold Sign influencer Blackdami made the day unforgettable.
 
-This is more than a movement—it's a dynasty built on passion, connection, and the power of art. Let's keep painting the future together.`
+We danced in our Orange, built in belief, and walked away knowing one thing: the Sign community isn't just strong online. it's powerful in person too.
+
+This is just the beginning.
+
+Let's create more memories, more hugs, and more breakthroughs, as we keep building this dynasty.
+
+Together. In every space, and in real life.`
         },
         {
           id: 2,
-          title: "Voices of the Streets: The Power of Sign Interviews",
-          excerpt: "Exploring the impact of Sign Dynasty's street interviews in amplifying untold stories and fostering community dialogue...",
+          title: "The Orange Mic: Building Bridges Across Web3 Communities",
+          excerpt: "In the ever-evolving world of Web3, real connection goes beyond tokens and timelines, it's about people, energy, and community...",
           date: "2024-07-10",
-          readTime: "5 min read",
-          category: "Community Voices",
+          readTime: "8 min read",
+          category: "Web3 Community",
           likes: 60,
-          content: `🎙️ Amplifying the Unheard: Sign Dynasty's Street Interviews
+          content: `🔶 The Orange Mic: Building Bridges Across Web3 Communities
 
-In a world filled with noise, Sign Dynasty's street interviews cut through with authenticity and heart. These impromptu conversations, captured on bustling city sidewalks, give a platform to voices that are often overlooked.
+In the ever-evolving world of Web3, real connection goes beyond tokens and timelines, it's about people, energy, and community. The Orange Mic once a simple expression of voice, has grown into a powerful symbol of unity, visibility, and genuine connection across several dynamic Web3 spaces.
 
-The "Voices of the Streets" series has become a cornerstone of the Sign Dynasty community, showcasing stories from everyday people—vendors, artists, passersby—who share their dreams, struggles, and triumphs. Each interview is a snapshot of humanity, raw and unfiltered, reminding us of the power of listening.
+Today, I reflect on how the Orange Mic has not only amplified voices but also built lasting bridges across ecosystems, making me more than just a participant but a proud, active contributor to powerful communities.
 
-What sets these interviews apart is their spontaneity. Armed with an orange microphone and genuine curiosity, Sign Dynasty's interviewers create safe spaces for people to open up. The result? Stories that inspire, challenge, and connect us.
+🔹 Dynamic DAO: A Gift of Belonging
+Through the Orange Mic, I had the honor of connecting with the Dynamic DAO community a forward-thinking collective championing inclusivity, innovation, and sustainable decentralization. What began as conversations turned into genuine connection, and recently, I was gifted a Dynamic DAO NFT. A powerful symbol of recognition and welcome.
 
-From a street vendor's journey to a young artist's vision for Web3, these conversations are building bridges across communities. The recent IRL event, where interviewees met their audience in person, was a testament to the impact of these stories—turning strangers into allies.
+I wear it with pride, not just as an asset but as a badge of community and belonging. It's a reminder of what Web3 truly offers, not just technology, but human-powered networks where value is felt and shared.
 
-Sign Dynasty isn't just amplifying voices; it's creating a movement where everyone has a story worth sharing.`
+🔹 State of NFT: Holding Space & Creating Vibes
+The journey continued into the State of NFT (SoNFT) community, a vibrant space that educates, empowers, and engages NFT enthusiasts across the board. Here, I serve as a moderator and co- hosting the "Chill & Vibes" session, holding space for authentic conversations, learning, and laughter.
+
+In this role, I've witnessed the power of intentional dialogue and how showing up consistently with energy and presence can shape the heartbeat of a digital tribe. Orange Mic moments here have sparked unforgettable vibes, built trust, and fostered genuine connections across borders.
+
+🔹 DTribe Academy: Learning, Growing, Thriving
+At DTribe, the experience has been beautifully transformative. This isn't just a community; it's an academy of Web3 discovery, a space where ideas are nurtured and knowledge is democratized. Through interactive sessions, peer learning, and collaborative events, I've deepened my understanding of the foundations and future of blockchain while connecting with bright minds across Africa and beyond.
+
+With the Orange Mic in hand, I've participated, asked, contributed, and grown. DTribe has empowered me to expand my voice and transform curiosity into clarity.
+
+🔸 More Than a Mic: A Movement of Meaning
+The Orange Mic has traveled far from Twitter Spaces to real-life IRL events — creating bonds that are rooted in trust, energy, and authenticity. Whether moderating, educating, or just vibing with others, the mic has become more than a tool… it's become a movement.
+
+It has opened doors, nurtured friendships, earned me a seat at important tables, and above all, connected me with purpose-driven builders and communities that are shaping the next digital frontier.
+
+🔶 Forever Grateful. Forever Building.
+I am deeply grateful for every gift, opportunity, and conversation and to all the communities that have seen the voice behind the mic and chosen to build with it.
+
+Here's to more collaboration, deeper learning, and unbreakable bonds across Web3.
+
+The Orange Mic is just getting started.💯🫡💪💡💫💥`
         }
       ],
     }),
@@ -245,18 +272,20 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
                     whileHover={{ scale: 1.02 }}
-                    className="content-card"
+                    className="content-card image-card"
                   >
-                    <img
-                      src={image.src || "/placeholder.svg"}
-                      alt={image.title}
-                      loading="lazy"
-                      className="image-element"
-                      onError={(e) => {
-                        console.error(`Failed to load image: ${image.src}`)
-                        e.target.src = "/placeholder.svg?height=270&width=300"
-                      }}
-                    />
+                    <div className="image-container">
+                      <img
+                        src={image.src || "/placeholder.svg"}
+                        alt={image.title}
+                        loading="lazy"
+                        className="image-element"
+                        onError={(e) => {
+                          console.error(`Failed to load image: ${image.src}`)
+                          e.target.src = "/placeholder.svg?height=270&width=300"
+                        }}
+                      />
+                    </div>
                     <div className="card-content">
                       <h3 className="card-title">{image.title}</h3>
                       <div className="card-meta">
@@ -443,11 +472,29 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
           display: block;
         }
 
+        .image-container {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+        }
+
         .image-element {
           width: 100%;
-          height: clamp(200px, 25vw, 270px);
-          object-fit: cover;
+          height: auto;
+          min-height: clamp(200px, 30vw, 270px);
+          object-fit: contain;
+          object-position: center;
           display: block;
+          background-color: #f8f9fa;
+        }
+
+        /* Special handling for image cards */
+        .image-card .image-container {
+          background-color: #f8f9fa;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: clamp(200px, 30vw, 270px);
         }
 
         .duration-badge {
@@ -524,6 +571,7 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
           font-size: clamp(0.85rem, 2vw, 1rem);
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
           font-family: Poppins, sans-serif;
+          white-space: pre-line;
         }
 
         .article-meta {
@@ -591,6 +639,16 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
             align-items: flex-start;
             gap: 0.5rem;
           }
+
+          .image-element {
+            min-height: 250px;
+            max-height: 350px;
+          }
+
+          .image-card .image-container {
+            min-height: 250px;
+            max-height: 350px;
+          }
         }
 
         /* Mobile specific adjustments */
@@ -636,6 +694,26 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
           .article-card {
             padding: 1rem;
           }
+
+          /* Mobile image optimizations */
+          .image-element {
+            height: auto;
+            min-height: 200px;
+            max-height: none;
+            object-fit: contain;
+            width: 100%;
+          }
+
+          .image-card .image-container {
+            min-height: 200px;
+            max-height: none;
+            height: auto;
+            padding: 0.5rem;
+          }
+
+          .image-card .image-element {
+            border-radius: 8px;
+          }
         }
 
         /* Extra small screens */
@@ -648,6 +726,15 @@ Sign Dynasty isn't just amplifying voices; it's creating a movement where everyo
           .tab-icon {
             width: 12px;
             height: 12px;
+          }
+
+          .image-element {
+            min-height: 180px;
+          }
+
+          .image-card .image-container {
+            min-height: 180px;
+            padding: 0.25rem;
           }
         }
       `}</style>

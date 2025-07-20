@@ -4,8 +4,8 @@ import Navbar from './Navbar';
 import HeroSection from './HeroSection';
 import EntertainmentSection from './EntertainmentSection';
 import EventsSection from './EventsSection';
-import NewsSection from './NewsSection';
 import Footer from './Footer';
+import CollaborationPage from './CollaborationPage';
 
 const LandingPage = () => {
   return (
@@ -15,7 +15,6 @@ const LandingPage = () => {
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        // Responsive background image
         backgroundImage: {
           xs: 'url(/AMA1-mobile.jpeg)', // Optimized for mobile
           sm: 'url(/AMA1.jpeg)', // Full image for larger screens
@@ -23,9 +22,9 @@ const LandingPage = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundAttachment: { xs: 'scroll', md: 'fixed' }, // Fixed: Removed invalid 'EcclesiaBaptist'
+        backgroundAttachment: { xs: 'scroll', md: 'fixed' },
         position: 'relative',
-        overflow: 'hidden', // Prevent overflow issues
+        overflow: 'hidden',
       }}
     >
       {/* Overlay for readability */}
@@ -37,8 +36,8 @@ const LandingPage = () => {
           right: 0,
           bottom: 0,
           backgroundColor: {
-            xs: 'rgba(255, 255, 255, 0.85)', // Stronger overlay for mobile
-            md: 'rgba(255, 255, 255, 0.7)', // Lighter for desktop
+            xs: 'rgba(255, 255, 255, 0.85)',
+            md: 'rgba(255, 255, 255, 0.7)',
           },
           zIndex: 1,
         }}
@@ -47,17 +46,25 @@ const LandingPage = () => {
       <Box sx={{ position: 'relative', zIndex: 2, flex: 1 }}>
         <Navbar />
         <Container
-          maxWidth="lg" // Constrain content width
+          maxWidth="lg"
           sx={{
             width: '100%',
-            px: { xs: 2, sm: 3, md: 4 }, // Responsive padding
-            py: { xs: 3, sm: 4, md: 6, lg: 8 }, // Responsive vertical padding
+            px: { xs: 2, sm: 3, md: 4 },
+            py: { xs: 3, sm: 4, md: 6, lg: 8 },
           }}
         >
-          <HeroSection />
-          <EntertainmentSection />
-          <EventsSection />
-          <NewsSection />
+          <div id="home">
+            <HeroSection />
+          </div>
+          <div id="entertainment">
+            <EntertainmentSection />
+          </div>
+          <div id="events">
+            <EventsSection />
+          </div>
+          <div id="collaboration">
+            <CollaborationPage />
+          </div>
         </Container>
         <Footer />
       </Box>

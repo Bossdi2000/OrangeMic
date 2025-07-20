@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Clock, Users, Ticket, ArrowRight } from 'lucide-react';
+import { Calendar, MapPin, Clock, Users, ArrowRight } from 'lucide-react';
 
 const EventsSection = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -8,81 +8,49 @@ const EventsSection = () => {
   const events = [
     {
       id: 1,
-      title: "Sign Dynasty Street Interview Marathon",
-      date: "2024-07-25",
-      time: "2:00 PM - 6:00 PM",
-      location: "Central Park, Abuja",
+      title: "TO BE DISCUSSED",
+      date: "2024-08-15",
+      time: null,
+      location: "Twitter (X) Spaces",
       type: "interview",
       status: "upcoming",
-      image: "https://via.placeholder.com/400x250/ff6b35/ffffff?text=Interview+Marathon",
-      attendees: 150,
-      description: "Join us for an exciting day of street interviews where we'll be talking to diverse community members about their experiences and perspectives.",
-      price: "Free"
+      image: "/AMA6.jpg",
+      description: "Stay tuned for an exciting upcoming event. More details will be announced soon!",
     },
     {
       id: 2,
-      title: "Sign Dynasty Live Performance",
-      date: "2024-07-30",
-      time: "7:00 PM - 10:00 PM",
-      location: "Unity Park, FCT",
+      title: "TO BE DISCUSSED",
+      date: "2024-08-30",
+      time: null,
+      location: "Twitter (X) Spaces",
       type: "performance",
       status: "upcoming",
-      image: "https://via.placeholder.com/400x250/ff6b35/ffffff?text=Live+Performance",
-      attendees: 300,
-      description: "Experience an electrifying live performance featuring local artists and interactive entertainment that brings the community together.",
-      price: "₦2,000"
+      image: "/AMA6.jpg",
+      description: "Another exciting event is being planned. Keep an eye out for updates and announcements!",
     },
     {
       id: 3,
-      title: "Community Storytelling Night",
-      date: "2024-08-05",
-      time: "6:00 PM - 9:00 PM",
-      location: "Cultural Center, Abuja",
-      type: "community",
-      status: "upcoming",
-      image: "https://via.placeholder.com/400x250/ff6b35/ffffff?text=Storytelling+Night",
-      attendees: 100,
-      description: "An intimate evening where community members share their stories, experiences, and cultural narratives in a supportive environment.",
-      price: "₦1,500"
-    },
-    {
-      id: 4,
-      title: "Sign Dynasty Workshop: Interview Skills",
+      title: "Men's Silence",
       date: "2024-07-20",
       time: "10:00 AM - 2:00 PM",
-      location: "Media Hub, Abuja",
+      location: "Twitter (X) Spaces",
       type: "workshop",
       status: "past",
-      image: "https://via.placeholder.com/400x250/ff6b35/ffffff?text=Workshop",
-      attendees: 75,
-      description: "Learn the art of conducting engaging street interviews and storytelling techniques from our experienced team.",
-      price: "₦3,000"
-    },
-    {
-      id: 5,
-      title: "Street Art & Interview Fusion",
-      date: "2024-08-15",
-      time: "3:00 PM - 7:00 PM",
-      location: "Arts District, FCT",
-      type: "collaboration",
-      status: "upcoming",
-      image: "https://via.placeholder.com/400x250/ff6b35/ffffff?text=Art+Fusion",
-      attendees: 200,
-      description: "A unique collaboration between street artists and Sign Dynasty, combining visual art with live interviews and performances.",
-      price: "Free"
+      image: "/AMA7.jpg",
+      description: "An insightful discussion exploring the complexities of men's emotional expression and communication patterns in modern society.",
+      eventLink: "https://x.com/orangemic28/status/1941075709944070171?t=x4loHMEeJ11f6y-OtZbdDg&s=09"
     },
     {
       id: 6,
-      title: "Youth Voices Initiative",
+      title: "Why Ladies think they need to be naked before they're seen",
       date: "2024-07-18",
       time: "4:00 PM - 6:00 PM",
-      location: "Youth Center, Abuja",
+      location: "Twitter (X) Spaces",
       type: "community",
       status: "past",
-      image: "https://via.placeholder.com/400x250/ff6b35/ffffff?text=Youth+Voices",
-      attendees: 120,
-      description: "Empowering young voices in our community through interviews and discussions about youth culture and aspirations.",
-      price: "Free"
+      image: "/AMA8.jpg",
+      description: "A thought-provoking conversation about societal expectations, self-expression, and the pressures women face in contemporary culture.",
+      eventLink: "https://x.com/orangemic28/status/1943134871926288866?t=iUMiOJINRijUksAujAKBAw&s=09"
     }
   ];
 
@@ -100,7 +68,7 @@ const EventsSection = () => {
       case 'past':
         return event.status === 'past';
       case 'free':
-        return event.price === 'Free';
+        return true; // All events are free now
       default:
         return true;
     }
@@ -125,6 +93,12 @@ const EventsSection = () => {
 
   const getStatusColor = (status) => {
     return status === 'upcoming' ? '#28a745' : '#6c757d';
+  };
+
+  const handleEventClick = (event) => {
+    if (event.status === 'past' && event.eventLink) {
+      window.open(event.eventLink, '_blank');
+    }
   };
 
   return (
@@ -227,14 +201,20 @@ const EventsSection = () => {
                 maxWidth: '100%'
               }}
             >
-              <div style={{ position: 'relative' }}>
+              <div style={{ 
+                position: 'relative',
+                backgroundColor: '#f8f9fa',
+                borderRadius: '0'
+              }}>
                 <img
                   src={event.image}
                   alt={event.title}
                   style={{
                     width: '100%',
-                    height: 'clamp(180px, 25vw, 220px)',
-                    objectFit: 'cover'
+                    height: 'auto',
+                    objectFit: 'contain',
+                    objectPosition: 'center',
+                    display: 'block'
                   }}
                 />
                 <div style={{
@@ -243,9 +223,9 @@ const EventsSection = () => {
                   right: 'clamp(10px, 2vw, 15px)',
                   backgroundColor: getStatusColor(event.status),
                   color: 'white',
-                  padding: 'clamp(4px, 1vw, 6px) clamp(8px, 2vw, 12px)',
+                  padding: 'clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 14px)',
                   borderRadius: '20px',
-                  fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)',
+                  fontSize: 'clamp(0.75rem, 2vw, 0.85rem)',
                   fontWeight: '600',
                   textTransform: 'uppercase'
                 }}>
@@ -256,9 +236,9 @@ const EventsSection = () => {
                   top: 'clamp(10px, 2vw, 15px)',
                   left: 'clamp(10px, 2vw, 15px)',
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  padding: 'clamp(6px, 1.5vw, 8px) clamp(8px, 2vw, 12px)',
+                  padding: 'clamp(8px, 2vw, 10px) clamp(10px, 2.5vw, 14px)',
                   borderRadius: '20px',
-                  fontSize: 'clamp(1rem, 2.5vw, 1.2rem)'
+                  fontSize: 'clamp(1.1rem, 3vw, 1.3rem)'
                 }}>
                   {getEventTypeIcon(event.type)}
                 </div>
@@ -283,29 +263,21 @@ const EventsSection = () => {
                   marginBottom: 'clamp(8px, 2vw, 10px)',
                   color: '#666'
                 }}>
-                  <Calendar size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
+                  <Calendar size={16} style={{ marginRight: '8px', flexShrink: 0 }} />
                   <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.date}</span>
                 </div>
 
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: 'clamp(8px, 2vw, 10px)',
-                  color: '#666'
-                }}>
-                  <Clock size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
-                  <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.time}</span>
-                </div>
-
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: 'clamp(8px, 2vw, 10px)',
-                  color: '#666'
-                }}>
-                  <MapPin size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
-                  <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.location}</span>
-                </div>
+                {event.time && (
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginBottom: 'clamp(8px, 2vw, 10px)',
+                    color: '#666'
+                  }}>
+                    <Clock size={16} style={{ marginRight: '8px', flexShrink: 0 }} />
+                    <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.time}</span>
+                  </div>
+                )}
 
                 <div style={{
                   display: 'flex',
@@ -313,8 +285,8 @@ const EventsSection = () => {
                   marginBottom: 'clamp(12px, 3vw, 15px)',
                   color: '#666'
                 }}>
-                  <Users size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
-                  <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.attendees} attendees</span>
+                  <MapPin size={16} style={{ marginRight: '8px', flexShrink: 0 }} />
+                  <span style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>{event.location}</span>
                 </div>
 
                 <p style={{
@@ -326,48 +298,30 @@ const EventsSection = () => {
                   {event.description}
                 </p>
 
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginBottom: 'clamp(15px, 4vw, 20px)'
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: '#ff6b35'
-                  }}>
-                    <Ticket size={clamp(14, 3, 16)} style={{ marginRight: '8px', flexShrink: 0 }} />
-                    <span style={{ fontSize: 'clamp(1rem, 2.5vw, 1.1rem)', fontWeight: '600' }}>
-                      {event.price}
-                    </span>
-                  </div>
-                </div>
-
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => handleEventClick(event)}
                   style={{
                     width: '100%',
-                    padding: 'clamp(10px, 2.5vw, 12px) 20px',
+                    padding: 'clamp(12px, 3vw, 15px) 20px',
                     backgroundColor: event.status === 'upcoming' ? '#ff6b35' : '#6c757d',
                     color: 'white',
                     border: 'none',
                     borderRadius: '25px',
                     fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
                     fontWeight: '600',
-                    cursor: event.status === 'upcoming' ? 'pointer' : 'not-allowed',
+                    cursor: 'pointer',
                     transition: 'all 0.3s ease',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     minHeight: '48px'
                   }}
-                  disabled={event.status === 'past'}
                 >
-                  {event.status === 'upcoming' ? 'Register Now' : 'Event Ended'}
+                  {event.status === 'upcoming' ? 'Coming Soon' : 'Space Ended'}
                   {event.status === 'upcoming' && (
-                    <ArrowRight size={clamp(14, 3, 16)} style={{ marginLeft: '8px', flexShrink: 0 }} />
+                    <ArrowRight size={16} style={{ marginLeft: '8px', flexShrink: 0 }} />
                   )}
                 </motion.button>
               </div>
@@ -385,7 +339,7 @@ const EventsSection = () => {
               color: '#666'
             }}
           >
-            <Calendar size={clamp(36, 8, 48)} style={{ marginBottom: '20px', color: '#ccc' }} />
+            <Calendar size={48} style={{ marginBottom: '20px', color: '#ccc' }} />
             <h3 style={{ 
               fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', 
               marginBottom: '10px' 
@@ -400,11 +354,6 @@ const EventsSection = () => {
       </div>
     </section>
   );
-};
-
-// Helper function for clamp values
-const clamp = (min, vw, max) => {
-  return Math.min(max, Math.max(min, (vw * window.innerWidth) / 100));
 };
 
 export default EventsSection;
