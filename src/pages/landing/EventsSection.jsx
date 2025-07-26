@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Clock, Users, ArrowRight } from 'lucide-react';
+import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
 
 const EventsSection = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
 
   const events = [
+    {
+      id: 0,
+      title: "SEX MYTHS STILL RULE OUR MINDS",
+      date: "2025-08-05",
+      time: null,
+      location: "Twitter (X) Spaces",
+      type: "workshop",
+      status: "upcoming",
+      image: "/UP1.jpeg",
+      description: "From \"You can't get pregnant the first time\" to \"Size determines satisfaction,\" we've heard it all. But how many of these are actually medically true? Let's unlearn, relearn, and laugh a little while we're at it. Set your reminder.",
+      eventLink: "https://x.com/Amari_metax/status/1948695995690483940?t=QpnoErlnyjIxWVz8mlwe4A&s=09"
+    },
     {
       id: 1,
       title: "TO BE DISCUSSED",
@@ -96,7 +108,7 @@ const EventsSection = () => {
   };
 
   const handleEventClick = (event) => {
-    if (event.status === 'past' && event.eventLink) {
+    if (event.eventLink) {
       window.open(event.eventLink, '_blank');
     }
   };
@@ -311,7 +323,7 @@ const EventsSection = () => {
                     borderRadius: '25px',
                     fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
                     fontWeight: '600',
-                    cursor: 'pointer',
+                    cursor: event.eventLink ? 'pointer' : 'default',
                     transition: 'all 0.3s ease',
                     display: 'flex',
                     alignItems: 'center',
